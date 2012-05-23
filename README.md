@@ -1,4 +1,4 @@
 javascript-interpreter
 ===========================
 
-This is my compile class project a javascript interpreter
+This is my compiler class project a javascript interpreter
