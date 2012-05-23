@@ -3,10 +3,10 @@ package org.landal.parser;
 import org.landal.lexer.ILexer;
 import org.landal.lexer.LexerException;
 import org.landal.token.IToken;
-import org.landal.utility.ITokenFifoList;
-import org.landal.utility.ITokenIterator;
-import org.landal.utility.TokenFifoList;
-import org.landal.utility.TokenIterator;
+import org.landal.utility.FifoList;
+import org.landal.utility.IFifoList;
+import org.landal.utility.IIterator;
+import org.landal.utility.ListIterator;
 
 /**
  * Questo classe espande le responsabilit� di un lexer, fornendo al parser le
@@ -26,12 +26,12 @@ public class LexerLL implements ILexer, LLAnalisys {
 	/**
 	 * Tipo di dato che serve per contenere la lista dei token per l'analisi LL.
 	 */
-	protected ITokenFifoList coda = null;
+	protected IFifoList<IToken> coda = null;
 
 	/**
 	 * Iterator per scandire la coda.
 	 */
-	protected ITokenIterator it = null;
+	protected IIterator<IToken> it = null;
 
 	/**
 	 * Questo campo rappresenta il lexer da cui leggere i dati ingresso.
@@ -45,13 +45,11 @@ public class LexerLL implements ILexer, LLAnalisys {
 	 *            lexer effettivamente usato per leggere l'ingresso.
 	 */
 	public LexerLL(ILexer lex) {
-
 		this.lex = lex;
-
 	}
 
 	/**
-	 * Restituisce il token successivo della frase cui un lexer concreto pu�
+	 * Restituisce il token successivo della frase cui un lexer concreto può
 	 * accedere grazie ad un dispositivo di accesso a lui noto.
 	 * 
 	 * @return IToken ritorna un riferimento al token successivo presente nella
@@ -61,18 +59,18 @@ public class LexerLL implements ILexer, LLAnalisys {
 	 */
 	public IToken nextToken() throws LexerException {
 
-		// verifico se la coda � vuota
+		// verifico se la coda è vuota
 		if (coda == null) {
 			// coda vuota leggo direttamente dal lexer
 			return lex.nextToken();
 		} else {// leggo dalla coda
 
 			if (!(coda.isEmpty())) {
-				// la coda � piena leggo dalla coda e consumo il carattere
-				return coda.getFifoToken();
+				// la coda è piena leggo dalla coda e consumo il carattere
+				return coda.getVal();
 			} else
 				return null;
-			// nel caso di coda vuota ritorno null in quanto non ci sono pi�
+			// nel caso di coda vuota ritorno null in quanto non ci sono più
 			// token
 		}// else
 
@@ -86,10 +84,8 @@ public class LexerLL implements ILexer, LLAnalisys {
 	 *            nuovo dispositivo di ingresso da assegnare al Lexer.
 	 */
 	public void init(java.io.Reader inp) {
-
 		lex.init(inp);
-
-	}// init
+	}
 
 	/**
 	 * Questo metodo restituisce il numero della righe di programma che si sta
@@ -98,10 +94,8 @@ public class LexerLL implements ILexer, LLAnalisys {
 	 * @return String numero della stringa.
 	 */
 	public String getLine() {
-
 		return lex.getLine();
-
-	}// getLine
+	}
 
 	/**
 	 * Questo metodo serve per inizializzare l'analisi LL, riempe la coda se non
@@ -117,25 +111,24 @@ public class LexerLL implements ILexer, LLAnalisys {
 	public void initAnalisysLL(IToken first)
 			throws org.landal.lexer.LexerException {
 
-		// verifico se la coda � stata creata
+		// verifico se la coda è stata creata
 		if (coda != null) {
-			// se la coda � ancora vuota la riempio
+			// se la coda è ancora vuota la riempio
 			if (coda.isEmpty())
-				coda.appendToken(first);// se � vuota lo metto nella coda nella
-										// coda
+				coda.append(first);// se è vuota lo metto nella coda
 			else {
 				// nel caso la coda non sia vuota il token passato lo devo
 				// mettere in testa alla coda
 				// vado all'inizio della coda
 				coda.goFirst();
 				// inserisco il token all'inizio della coda
-				coda.insertToken(first);
+				coda.insert(first);
 			}
 		}// la coda non esiste la devo creare
 		else
 			fillCoda(first);
 		// inizializzo un iterator per scandire la coda
-		it = new TokenIterator(coda);
+		it = new ListIterator<IToken>(coda);
 
 	}// initAnalisysLL
 
@@ -177,7 +170,7 @@ public class LexerLL implements ILexer, LLAnalisys {
 		// uso l'iterator per leggere la coda
 		// leggo dalla coda e se sono alla fine restituisco null
 		if (it.hasNext())
-			return it.nextToken();
+			return it.next();
 		else
 			return null;
 
@@ -192,10 +185,8 @@ public class LexerLL implements ILexer, LLAnalisys {
 	 *            primo token da inserire nella coda.
 	 * @return TokenFifoList
 	 */
-	protected ITokenFifoList creaCoda(IToken first) {
-
-		return new TokenFifoList(first);
-
+	protected IFifoList<IToken> creaCoda(IToken first) {
+		return new FifoList<IToken>(first);
 	}
 
 }// LexerLL

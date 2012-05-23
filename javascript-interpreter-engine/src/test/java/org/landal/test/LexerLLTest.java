@@ -1,15 +1,21 @@
 package org.landal.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
+import java.io.StringReader;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.landal.lexer.*;
-import org.landal.parser.*;
-import org.landal.token.*;
-import org.landal.utility.*;
-
-import java.io.*;
+import org.landal.lexer.ILexer;
+import org.landal.lexer.Lexer;
+import org.landal.lexer.LexerException;
+import org.landal.parser.LLAnalisys;
+import org.landal.parser.LexerLL;
+import org.landal.token.IToken;
+import org.landal.token.TokenFactory;
+import org.landal.utility.FifoList;
+import org.landal.utility.IFifoList;
 
 /**
  * Questa classe serve per testare la classe LexerLL
@@ -66,9 +72,9 @@ public class LexerLLTest {
 			assertTrue("lettura token da coda:", res.equals(resExp));
 
 			// vado avanti fino alla fine della coda
-			ITokenFifoList tl = new TokenFifoList();
+			IFifoList<IToken> tl = new FifoList<IToken>();
 			while ((tok = ll.readCoda()) != null) {
-				tl.insertFifoToken(tok);
+				tl.insertVal(tok);
 			}
 			res = tl.toString();
 			resExp = "(  |  i  |  =  |  0  |  ;  |  i  |  <  |  10  |  ;  |  i  |  ++  |  )  |  {  |  break  |  ;  |  }  ";
@@ -76,7 +82,7 @@ public class LexerLLTest {
 
 			// ora comincio a togliere i token dalla fifo.
 			res = "";
-			while ((tok = tl.getFifoToken()) != null)
+			while ((tok = tl.getVal()) != null)
 				res = res + tok.toString();
 			resExp = "(i=0;i<10;i++){break;}";
 			assertTrue("svuotata coda:", res.equals(resExp));

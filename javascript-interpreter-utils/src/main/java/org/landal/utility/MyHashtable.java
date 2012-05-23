@@ -4,38 +4,45 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 
 /**
- * Questa classe eredita da hashtable tutti i comportamenti, si essa specializza solo la stampa.
- * @author  Landini Alex
+ * Questa classe eredita da hashtable tutti i comportamenti, si essa specializza
+ * solo la stampa.
+ * 
+ * @author Landini Alex
  * @version 1.0
  */
- public class MyHashtable extends Hashtable{
+public class MyHashtable<K, V> extends Hashtable<K, V> {
 
-        /**
-         * Costruttore di MyHashtable
-         */
- 	public MyHashtable(){
-            super();
-        }
+	private static final long serialVersionUID = 1L;
 
- 	/**
-         * Rappresentazione esterna della hashtable diversa da quella di Hashtable.
-         * @return  String  rappresentazione esterna.
-         */
-        public String toString(){
+	private static final String NEW_LINE = "\n";
+	private static final String EQUAL_SYMBOL = " = ";
 
-            Enumeration en1=this.elements();
-            Enumeration en2=this.keys();
-            Object o;
-            String s = new String();
-            String str = new String();
-            while (en1.hasMoreElements()){
-                    o = en1.nextElement();
-                    s = (String) en2.nextElement();
-                    str= str + s +" = "+o.toString()+"\n";
-                    }
+	/**
+	 * Costruttore di MyHashtable
+	 */
+	public MyHashtable() {
+		super();
+	}
 
-            return str;
+	/**
+	 * Rappresentazione esterna della hashtable diversa da quella di Hashtable.
+	 * 
+	 * @return String rappresentazione esterna.
+	 */
+	public String toString() {
 
-        }//fine toString
+		StringBuilder sb = new StringBuilder();
 
- }
+		Enumeration<V> en1 = this.elements();
+		Enumeration<K> en2 = this.keys();
+
+		while (en1.hasMoreElements()) {
+			sb.append(en2.nextElement().toString()).append(EQUAL_SYMBOL)
+					.append(en1.nextElement().toString()).append(NEW_LINE);
+		}
+
+		return sb.toString();
+
+	}
+
+}
