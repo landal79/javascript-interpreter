@@ -1,18 +1,18 @@
 package org.landal.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+
+import java.io.StringReader;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.landal.apt.IApt;
 import org.landal.lexer.ILexer;
 import org.landal.lexer.Lexer;
 import org.landal.parser.IParser;
 import org.landal.parser.JavascriptParser;
 import org.landal.token.TokenFactory;
 import org.landal.visitor.InterpreterVisitor;
-
-import java.io.StringReader;
 
 /**
  * Classe di Test per il parser
@@ -32,14 +32,9 @@ public class InterpreterTest {
 	private IParser par;
 
 	/**
-	 * visitor interprete.�
+	 * visitor interprete.
 	 */
 	private InterpreterVisitor vis;
-
-	/**
-	 * albero di cui compiere l'interpretazione.
-	 */
-	private IApt apt = null;
 
 	/**
 	 * Inizializzo le classi per l'esecuzione del test.

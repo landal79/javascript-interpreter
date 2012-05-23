@@ -6,19 +6,22 @@
 	<version>1.0.0-SNAPSHOT</version>
 
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
 	</properties>
 
 	<dependencyManagement>
 
 		<dependencies>
-
 			<dependency>
 				<groupId>org.landal.javascript.engine</groupId>
 				<artifactId>javascript-interpreter-engine</artifactId>
 				<version>${project.version}</version>
 			</dependency>
-
+			<dependency>
+				<groupId>org.landal.javascript</groupId>
+				<artifactId>javascript-interpreter-utils</artifactId>				
+				<version>${project.version}</version>
+			</dependency>
 		</dependencies>
 
 	</dependencyManagement>
@@ -34,13 +37,13 @@
 	</dependencies>
 
 	<build>
-		<plugins>			
+		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
+					<source>1.5</source>
+					<target>1.5</target>
 					<encoding>UTF-8</encoding>
 				</configuration>
 			</plugin>
@@ -61,5 +64,6 @@
 	<modules>
 		<module>javascript-interpreter-engine</module>
 		<module>javascript-interpreter-gui</module>
+		<module>javascript-interpreter-utils</module>
 	</modules>
 </project>

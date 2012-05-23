@@ -276,31 +276,14 @@ public class LexerTest {
 
 	}// testSimboli
 
-	@Test
-	public void testErroreStringa() {
+	@Test(expected = LexerException.class)
+	public void testErroreStringa() throws LexerException {
 
-		// stringa per i risultati delle valutazioni
-		String res = null;
-		// Stringa per i risultati attesi
-		String resExpected = null;
+		String resExpected = new String("ciao");
+		lex.init(new StringReader("\"ciao"));
+		String res = lex.nextToken().toString();
 
-		// errori nel riconoscimento di stringhe
-		try {
-			resExpected = new String("ciao");
-			lex.init(new StringReader("\"ciao"));
-			res = lex.nextToken().toString();
-
-		} catch (LexerException e) {
-
-			assertTrue(
-					"Errore Stringa: ",
-					e.getMessage()
-							.equals("Errore: riga 1 :Manca il carattere terminale della stringa: \""));
-			return;
-		}// catch
-		fail("si doveva avere un'eccezione");
-
-	}// test Errore
+	}
 
 	/**
 	 * Questo metodo serve per testare il riconoscimento delle parole chiave.
