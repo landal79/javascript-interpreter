@@ -9,5 +9,7 @@ import javax.swing.JPanel;
  * @author Alex Landini
  */
 public abstract class CommandButton extends JPanel implements ICmdButton {
+	
+	private static final long serialVersionUID = 1L;
 
 }

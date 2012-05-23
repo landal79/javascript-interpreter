@@ -44,7 +44,7 @@ public class IODevice extends JApplet implements IIODevice {
 	 * Applet context.
 	 */
 	protected java.applet.AppletContext apCtx;
-	
+
 	/**
 	 * JFrame.
 	 */
@@ -77,7 +77,12 @@ public class IODevice extends JApplet implements IIODevice {
 
 		configura();
 		
-		if(frame != null){
+		// se è un'applicazione stand-alone devo creare il frame
+		setFrame();
+
+		validate();
+
+		if (frame != null) {
 			frame.setVisible(true);
 		}
 
@@ -108,11 +113,6 @@ public class IODevice extends JApplet implements IIODevice {
 
 		panel.add("South", out);
 
-		// se è un'applicazione stand-alone devo creare il frame
-		setFrame();
-
-		validate();
-
 	}// configura
 
 	/**
@@ -120,7 +120,7 @@ public class IODevice extends JApplet implements IIODevice {
 	 * se l'applicazione � gi� un applet. In caso contrario crea un frame di
 	 * classe FrameClosing
 	 */
-	protected void setFrame() {		
+	protected void setFrame() {
 
 		try {
 			apCtx = getAppletContext();
@@ -129,7 +129,7 @@ public class IODevice extends JApplet implements IIODevice {
 			frame = new FrameClosing(logo);
 			frame.getContentPane().add(this);
 			frame.pack();
-			frame.validate();			
+			frame.validate();
 
 		}// catch
 

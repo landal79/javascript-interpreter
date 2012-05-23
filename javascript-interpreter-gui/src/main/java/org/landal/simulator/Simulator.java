@@ -31,11 +31,12 @@ public class Simulator extends IODevice {
 		super(name);
 	}
 
-	protected void configura() {		
+	@Override
+	protected void configura() {	
 		super.configura();
-		super.addCmdButton("Analisi Sintattica", new SintaxCommand());
-		super.addCmdButton("Interpreta", new InterpretCommand());
-	}// configura
+		addCmdButton("Analisi Sintattica", new SintaxCommand());
+		addCmdButton("Interpreta", new InterpretCommand());		
+	}
 
 	/**
 	 * Main dell'applicazione.
