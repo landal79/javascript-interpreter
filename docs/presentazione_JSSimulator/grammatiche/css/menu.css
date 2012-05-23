@@ -1,0 +1,16 @@
+.txtmenu {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #000000;
+}
+body {
+	background-color: #E4E7FC;
+}
+.menutit {
+
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-weight: bold;
+	color: #611E10;
+}

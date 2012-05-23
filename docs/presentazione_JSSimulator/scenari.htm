@@ -1,0 +1,421 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Documento senza titolo</title>
+<link href="css/main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h3 id="top">Desctizione casi d'uso</h3>
+<table width="100%">
+	<tr>
+		<td class="menu"><img src="img/pall.gif"><a href="#int"> Interpretazione</a></td>
+		<td class="menu"><img src="img/pall.gif"><a href="#alb"> Albero</a></td>
+		<td class="menu"><img src="img/pall.gif"><a href="#sin"> Analisi Sintattica</a></td>
+		<td class="menu"><img src="img/pall.gif"><a href="#les"> Analisi Lessicale</a></td>
+	</tr>
+</table>
+<hr>
+<h4 id="int"><img src="img/pall.gif" width="10" height="13"> Caso d'uso: Interpretazione</h4>
+<table width="90%"  border="1" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><h5>Descrizione:</h5>
+      <ul>
+        <li>compie l'interpretazione (secondo le regole semantiche stabilite) di un  programma scritto in javascript di lunghezza qualsiasi, ricevuto in ingresso attraverso il dispositivo di input. </li>
+      </ul>
+    <p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td><h5>Attore Primario:</h5>
+      <ul>
+        <li>Utente</li>
+      </ul>
+    <p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td><h5>Precondizioni:</h5>
+      <ul>
+        <li>&egrave; disponibile una frase di ingresso sul dispositivo di input;</li>
+      </ul>
+    <p>&nbsp; </p></td>
+  </tr>
+  <tr>
+    <td><h5>Postcondizioni:</h5>
+      <ul>
+        <li>viene visualizzata in uscita sul dispositivo di output l'elenco delle variabili, contenenti i valori dopo la valutazione della frase; </li>
+      </ul>
+    <p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td><h5>Scenario Principale:</h5>
+	  	<table width="100%"  border="1" cellspacing="0" cellpadding="0">
+          <tr align="center">
+            <td width="30">&nbsp;</td>
+            <td>UTENTE</td>
+            <td>SISTEMA</td>
+          </tr>
+          <tr>
+            <td align="center">1</td>
+            <td> Richiede l'interpretazione del programma </td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td align="center">2</td>
+            <td>&nbsp;</td>
+            <td>reperisce la frase dal dispositivo di input</td>
+          </tr>
+          <tr>
+            <td align="center">3</td>
+            <td>&nbsp;</td>
+            <td><em>include ( <a href="#les">Analisi Lessicale</a> )</em></td>
+          </tr>
+          <tr>
+            <td align="center">4</td>
+            <td>&nbsp;</td>
+            <td><em>include ( <a href="#sin">Analisi Sintattica</a> )</em></td>
+          </tr>
+          <tr>
+            <td align="center">5</td>
+            <td>&nbsp;</td>
+            <td>esegue l'interpretazione della frase</td>
+          </tr>
+          <tr>
+            <td align="center">6</td>
+            <td>&nbsp;</td>
+            <td>fornisce in uscita l'elenco delle variabili</td>
+          </tr>
+        </table>
+    </td>
+  </tr>
+  <tr>
+    <td><h5>I scenario di errore:</h5>
+      <table width="100%"  border="1" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="30" align="center">2.1</td>
+          <td>SISTEMA: manca la frase sul disposistivo di input, la valutazione viene interrota, viene visualizzato un messaggio di errore; </td>
+        </tr>
+      </table></td>
+  </tr>
+  <tr>
+    <td><h5>II scenario di errore:</h5>
+      <table width="100%"  border="1" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="30">3.1</td>
+          <td>SISTEMA: errore lessicale, termina la valutazione con insuccesso, viene visualizzato un messaggio di errore; </td>
+        </tr>
+      </table>      </td>
+  </tr>
+  <tr>
+    <td><h5>III scenario di errore:</h5>
+      <table width="100%"  border="1" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="30" align="center">4.1</td>
+          <td>SISTEMA: errore sintattico, termina la valutazione con insuccesso, viene visualizzato un messaggio di errore; </td>
+        </tr>
+      </table>      </td>
+  </tr>
+  <tr>
+    <td><h5>IV scenario di errore:</h5>
+      <table width="100%"  border="1" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="30" align="center">5.1</td>
+          <td>SISTEMA: errore durante la valutazione, termina la valutazione con insuccesso, viene visualizzato un messaggio di errore; </td>
+        </tr>
+      </table></td>
+  </tr>
+</table>
+<p><a href="#top"><img src="img/freccia_su.gif" width="30" height="30" border="0"></a></p>
+<hr>
+<h4 id="alb"><img src="img/pall.gif" width="10" height="13"> Caso d'uso: Albero</h4>
+<table width="90%" align="center"  border="1" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><h5>Descrizione:</h5>
+      <ul>
+        <li>viene visualizzata la rappresentazione sotto forma di albero di derivazione di una  frase presente o di un breve programma sul dispositivo di output. Si &egrave; scelto di rappresentare l'albero con la notazione XML.</li>
+      </ul>
+    <p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td><h5>Attore Primario:</h5>
+      <ul>
+        <li>Utente</li>
+      </ul>
+    <p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td><h5>Precondizioni:</h5>
+      <ul>
+        <li>&egrave; disponibile una singola frase di ingresso sul dispositivo di input;</li>
+      </ul>
+    <p>&nbsp; </p></td>
+  </tr>
+  <tr>
+    <td><h5>Postcondizioni:</h5>
+      <ul>
+        <li>viene visualizzata in uscita sul dispositivo di output una rappresentazione grafica della frase; </li>
+      </ul>
+    <p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td><h5>Scenario Principale:</h5>
+	  	<table width="100%"  border="1" cellspacing="0" cellpadding="0">
+          <tr align="center">
+            <td width="30">&nbsp;</td>
+            <td>UTENTE</td>
+            <td>SISTEMA</td>
+          </tr>
+          <tr>
+            <td align="center">1</td>
+            <td> Richiede la visualizzazione della frase sotto forma di albero </td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td align="center">2</td>
+            <td>&nbsp;</td>
+            <td>reperisce la frase dal dispositivo di input</td>
+          </tr>
+          <tr>
+            <td align="center">3</td>
+            <td>&nbsp;</td>
+            <td><em>include ( <a target="#les">Analisi Lessicale</a> )</em></td>
+          </tr>
+          <tr>
+            <td align="center">4</td>
+            <td>&nbsp;</td>
+            <td><em>include ( <a href="#sin">Analisi Sintattica</a> )</em></td>
+          </tr>
+          <tr>
+            <td align="center">5</td>
+            <td>&nbsp;</td>
+            <td>fornisce la rappresentazione sotto forma di albero della frase sul dispositivo di output; </td>
+          </tr>
+        </table>
+    </td>
+  </tr>
+  <tr>
+    <td><h5>I scenario di errore:</h5>
+      <table width="100%"  border="1" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="30" align="center">2.1</td>
+          <td>SISTEMA: manca la frase sul disposistivo di input, la valutazione viene interrota, viene visualizzato un messaggio di errore; </td>
+        </tr>
+      </table></td>
+  </tr>
+  <tr>
+    <td><h5>II scenario di errore:</h5>
+      <table width="100%"  border="1" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="30">3.1</td>
+          <td>SISTEMA: errore lessicale, termina la valutazione con insuccesso, viene visualizzato un messaggio di errore; </td>
+        </tr>
+      </table>      </td>
+  </tr>
+  <tr>
+    <td><h5>III scenario di errore:</h5>
+      <table width="100%"  border="1" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="30" align="center">4.1</td>
+          <td>SISTEMA: errore sintattico, termina la valutazione con insuccesso, viene visualizzato un messaggio di errore; </td>
+        </tr>
+      </table>      </td>
+  </tr>
+</table>
+<p><a href="#top"><img src="img/freccia_su.gif" width="30" height="30" border="0"></a></p>
+<hr>
+<h4 id="sin"><img src="img/pall.gif" width="10" height="13"> Caso d'uso: Analisi Sintattica </h4>
+<table width="90%" align="center"  border="1" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><h5>Descrizione:</h5>
+      <ul>
+        <li>viene compiuta l'analisi sintattica di un programma javascript; </li>
+      </ul>
+    <p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td><h5>Osservazioni:</h5>
+      <ul>
+        <li>l'analisi sintattica pu&ograve; essere invocata direttamente dall'utente, oppure pu&ograve; essere il sistema che la invoca per eseguire altri casi d'uso, in cui si richiede l'analisi sintattica;</li>
+      </ul>
+    <p>&nbsp; </p></td>
+  </tr>
+  <tr>
+    <td><h5>Attore Primario:</h5>
+      <ul>
+        <li>Utente</li>
+      </ul>
+    <p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td><h5>Precondizioni:</h5>
+      <ul>
+        <li>&egrave; disponibile una singola frase di ingresso sul dispositivo di input;</li>
+      </ul>
+    <p>&nbsp; </p></td>
+  </tr>
+  <tr>
+    <td><h5>Postcondizioni:</h5>
+      <ul>
+        <li>la frase &egrave; sintatticamente corretta; </li>
+      </ul>
+    <p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td><h5>Scenario Principale:</h5>
+	  	<table width="100%"  border="1" cellspacing="0" cellpadding="0">
+          <tr align="center">
+            <td width="30">&nbsp;</td>
+            <td>UTENTE</td>
+            <td>SISTEMA</td>
+          </tr>
+          <tr>
+            <td align="center">1</td>
+            <td> Richiede l'analisi sintattica</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td align="center">2</td>
+            <td>&nbsp;</td>
+            <td>reperisce la frase dal dispositivo di input</td>
+          </tr>
+          <tr>
+            <td align="center">3</td>
+            <td>&nbsp;</td>
+            <td><em>include ( Analisi Lessicale )</em></td>
+          </tr>
+          <tr>
+            <td align="center">4</td>
+            <td>&nbsp;</td>
+            <td>esegue l'analisi sintattica</td>
+          </tr>
+          <tr>
+            <td align="center">5</td>
+            <td>&nbsp;</td>
+            <td>fornisce in uscita un messaggio che indica la correttezza sintattica della frase. </td>
+          </tr>
+        </table>
+    </td>
+  </tr>
+  <tr>
+    <td><h5>Scenario alternativo:</h5>
+	<table width="100%"  border="1" cellspacing="0" cellpadding="0">
+          <tr align="center">
+            <td width="30">&nbsp;</td>
+            <td>SISTEMA</td>
+          </tr>
+          <tr>
+            <td align="center">3</td>
+            <td><em>include ( Analisi Lessicale )</em></td>
+          </tr>
+          <tr>
+            <td align="center">4</td>
+            <td>esegue l'analisi sintattica</td>
+          </tr>
+      </table>
+    <ul>
+      <li>quando il caso d'uso viene richiesto dal sistema vengono compiuti solo i passi 3 e 4 dello scenario principale; </li>
+    </ul></td>
+  </tr>
+  <tr>
+    <td><h5>I scenario di errore:</h5>
+      <table width="100%"  border="1" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="30" align="center">2.1</td>
+          <td>SISTEMA: manca la frase sul disposistivo di input, la valutazione viene interrota, viene visualizzato un messaggio di errore; </td>
+        </tr>
+      </table></td>
+  </tr>
+  <tr>
+    <td><h5>II scenario di errore:</h5>
+      <table width="100%"  border="1" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="30">3.1</td>
+          <td>SISTEMA: errore lessicale, termina la valutazione con insuccesso, viene visualizzato un messaggio di errore; </td>
+        </tr>
+      </table>      </td>
+  </tr>
+  <tr>
+    <td><h5>III scenario di errore:</h5>
+        <table width="100%"  border="1" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="30">4.1</td>
+            <td>SISTEMA: errore sintattico, termina la valutazione con insuccesso, viene visualizzato un messaggio di errore; </td>
+          </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<p><a href="#top"><img src="img/freccia_su.gif" width="30" height="30" border="0"></a></p>
+<hr>
+<h4 id="les"><img src="img/pall.gif" width="10" height="13"> Caso d'uso: Analisi Lessicale </h4>
+<table width="90%" align="center"  border="1" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><h5>Descrizione:</h5>
+      <ul>
+        <li>viene compiuta l'analisi lessicale di un programma javascript; </li>
+      </ul>
+    <p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td><h5>Precondizioni:</h5>
+      <ul>
+        <li>la frase da analizzare &egrave; gi&agrave; disponibile;</li>
+      </ul>
+    <p>&nbsp; </p></td>
+  </tr>
+  <tr>
+    <td><h5>Postcondizioni:</h5>
+      <ul>
+        <li>la frase &egrave; sintatticamente corretta; </li>
+      </ul>
+    <p>&nbsp;</p></td>
+  </tr>
+  <tr>
+    <td><h5>Scenario Principale:</h5>
+	  	<table width="100%"  border="1" cellspacing="0" cellpadding="0">
+          <tr align="center">
+            <td width="30">&nbsp;</td>
+            <td>SISTEMA</td>
+          </tr>
+          <tr align="center">
+            <td align="center">1</td>
+            <td align="left">reperisce la frase da analizzare </td>
+          </tr>
+          <tr>
+            <td align="center">2</td>
+            <td>esegue l'analisi lessicale </td>
+          </tr>
+        </table>
+    </td>
+  </tr>
+  <tr>
+    <td><h5>I scenario di errore:</h5>
+      <table width="100%"  border="1" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="30" align="center">1.1</td>
+          <td>SISTEMA: non &egrave; disponibile nessuna frase, la valutazione viene interrota, viene visualizzato un messaggio di errore; </td>
+        </tr>
+      </table></td>
+  </tr>
+  <tr>
+    <td><h5>II scenario di errore:</h5>
+      <table width="100%"  border="1" cellspacing="0" cellpadding="0">
+        <tr>
+          <td width="30">2.1</td>
+          <td>SISTEMA: errore lessicale, termina la valutazione con insuccesso, viene visualizzato un messaggio di errore; </td>
+        </tr>
+      </table>      </td>
+  </tr>
+</table>
+<p><a href="#top"><img src="img/freccia_su.gif" width="30" height="30" border="0"></a></p>
+<hr>
+<table align="center">
+	 <tr> 
+    	<td><a href="usecasediag.htm"><img src="img/freccia_sx.gif" border="0"></a></td>
+    	<td><a href="introduzione.htm" onClick="parent.leftFrame.location='sommario.htm';"><img src="img/home.gif" border="0"></a></td>
+    	<td><a href="protointer.htm" target="_self" ><img src="img/freccia_dx.gif" border="0"></a></td>
+  	</tr>
+</table>	
+</body>
+</html>

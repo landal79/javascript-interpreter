@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Documento senza titolo</title>
+<link href="css/main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<img src="img/progetto.jpg" width="300" height="60">
+<hr>
+<h3 id="graf">Interfaccia Grafica</h3>
+<ul>
+
+	<li>Per quanto riguarda l'interfaccia grafica si &egrave; deciso di creare un framework per applicazioni grafiche che ha alcune caratteristiche fondamentali: 
+	<br/>&nbsp;
+	
+	<ul>
+		<li>I dispositivi di input e output sono due aree, ognuna di esse ha il relativo bottone per cancellare il rispettivo contenuto; i comandi, che verrenno eseguiti su quanto &egrave; presente in input, possono essere richiamati cliccando uno dei bottoni delle operazioni (il numero di bottoni &egrave; inseribile a piacere);</li>
+        <li>L'interfaccia grafica pu&ograve; essere usata sia per creare applicazioni stand-alone, sia per creare applet;</li>
+	    <li>I comandi da eseguire sono configurabili;</li>
+	</ul>
+  </li>
+	<br/>
+	<li>Le componeneti principali, che deve gestire, sono:
+	<br/>
+	&nbsp;
+		<ul>
+			<li><i>InpDev</i>: un dispositivo di input, costituito da un'area, con le relative operazioni per leggere da esso;</li>
+			<br/>&nbsp;
+			<li><i>OutDev</i>: un dispositivo di output, costituito da un'area, con le relative operazioni per scrivere su di esso;</li>
+			<br/>&nbsp;
+			<li><i>CmdButton</i>: un dispositivo che contiene un insieme di pulsanti necessari per invocare le varie funzionalità messe a disposizione dall'applicazione, sarà 
+			quindi necessario fornire delle funzioni che servono per collegare le varie funzionalità dell'applicazione al relativo pulsante di invocazione;</li>
+	    </ul>
+		
+	<h4>Dispositivo di input</h4>
+	<ul>
+		<li>Il dispositivo di input &egrave; costituito da un area di testo, da un pulsante per cancellare il contenuto dell'area di testo e da una etichetta che serve per indicare informazione relative all'input;</li>
+     </ul>
+	  <p align="center"><img src="img/inpDevdiag.JPG" width="530" height="565"> </p>
+	 <br/>
+	 <h4>Dispositivo di output</h4>
+	 <ul>
+	 	<li>Il Dispositivo di output &egrave; costituito da un area di testo, da un pulsante per cancellare l'area di output; inoltre esso fornisce tutte i metodi per visualizzare i risultati su di esso; </li>
+	 </ul>
+	 <p align="center"><img src="img/outDevdiag.JPG" width="530" height="591"></p>
+	 <br/>
+	 <h4>Pannello dei bottoni di comando</h4>
+	 <ul>
+	 	<li>Questo pannello è un componente configurabile con un numero di bottoni a piacere, ogni pulsante &egrave; configurabile con una particolare operazione, ogni comando inoltre pu&ograve; essere configurato anche per quanto riguardail dispositivo di input e di output, in questo modo se sono presenti più dispositivi di ingresso e uscita con funzioni
+		diverse nell'interfaccia è possibile scegliere su quali un bottone deve agire;</li>
+	 </ul>
+	 <p align="center"><img src="img/cmdbuttondiag.JPG" width="530" height="664"></p>
+ 	<h4>Frame</h4>
+	<ul>
+		<li>Finestra che viene creata nel caso di applicazione stand-alone;</li>
+	    <p align="center"><img src="img/frameDiag.JPG" width="530" height="475"></p>
+	<h4>IODevice</h4>
+	<ul>
+		<li>IODevice è un framework per I/O, specializzando il suo comportamento si ottengono applicazioni che 
+		possono esegueri operazioni diverse agendo su un dispositivo di ingresso e uno di uscita attraverso la
+		pressione di pulsanti;</li>
+		<p align="center"><img src="img/deviceDiag.JPG"></p> 
+	</ul>
+	
+	</ul>
+  </li>
+</ul>
+<hr>
+<table align="center">
+	 <tr> 
+    	<td><a href="architettura.htm" onClick="parent.leftFrame.location='sommario.htm';"><img src="img/freccia_sx.gif" border="0"></a></td>
+    	<td><a href="introduzione.htm" onClick="parent.leftFrame.location='sommario.htm';"><img src="img/home.gif" border="0"></a></td>
+    	<td><a href="token.htm" ><img src="img/freccia_dx.gif" border="0"></a></td>
+  	</tr>
+</table>	
+</body>
+</html>

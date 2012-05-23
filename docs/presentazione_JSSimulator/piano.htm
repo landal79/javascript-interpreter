@@ -1,0 +1,242 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Documento senza titolo</title>
+<link href="css/main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<p><img src="img/piano.jpg" id="top" width="350" height="60"></p>
+<table width="100%"  border="0" cellpadding="0" cellspacing="10" class="menu">
+  <tr>
+    <td><img src="img/pall.gif" width="10" height="13"> <a href="#pre">Fase Preliminare </a></td>
+    <td><img src="img/pall.gif" width="10" height="13"> <a href="#pro1">Prototipo 1 </a></td>
+    <td><img src="img/pall.gif" width="10" height="13">  <a href="#pro3">Prototipo 3 </a></td>
+    <td><img src="img/pall.gif" width="10" height="13"> <a href="#distr">Distribuzione</a></td>
+  </tr>
+  <tr>
+    <td><img src="img/pall.gif" width="10" height="13"> <a href="#arch">Architettura</a></td>
+    <td><img src="img/pall.gif" width="10" height="13"> <a href="#pro2">Prototipo 2 </a></td>  
+    <td><img src="img/pall.gif" width="10" height="13"> <a href="#pro5">Integrazione</a></td>
+  </tr>
+</table>
+<hr>
+<p class="txt">La gestione del progetto è suddivisa nelle seguenti fasi:</p>
+<li><h3 id="pre">Fase di Preliminare </h3>
+<br/>
+Il punto chiave della fase di avvio è predisporre l'ambiente del progetto e determinare le 
+condizioni iniziali necessarie per il suo successo;
+<br/>&nbsp;
+<table width="100%"  border="2" cellspacing="0" cellpadding="0">
+  <tr>
+    <th width="40%" scope="col">Obiettivo</th>
+    <th width="40%" scope="col">Descrizione</th>
+    <th width="20%" scope="col">Scadenza</th>
+  </tr>
+  <tr>
+    <td class="menu"> Definizione ambiente di lavoro</td>
+    <td>Scelta dl linguaggio, reazione cartelle per contenere i vari prodotti del processo di sviluppo, impostazione di ANT e Junit (creazione del buildfile).</td>
+    <td align="center">-</td>
+  </tr>
+  <tr>
+    <td class="menu">Costruzione di un framework grafico per applicazioni</td>
+    <td>Creazione di una framework per interfacce grafice che potremo specializzare per il nostro specifico caso; tale framework inoltre potr&agrave; essere usato per costruire applicazioni stand alone e applet grafici; <BR>  </td>
+    <td align="center">5 giorni </td>
+  </tr>
+</table>
+<br/>
+Al termine della fase preliminare si avrà a disposizione una ambiente collaudato e sufficientemente automatizzato per la compilazione e il testing dei programmi tramite l'utilizzo di ant e junit. 
+Sarà inoltre disponibile una librerie di funzioni di IO grafico che fornisce una solida base per il testing manuale dei programmi e la realizzazione dei prototipi.
+</li>
+<br/><a href="#top"><img src="img/freccia_su.gif" border="o"></a>
+<hr>
+<li><h3 id="arch">Definizione di una Architettura Logica</h3>
+<br/>
+In questa fase si vuole delineare uno scheletro per l'applicazione, tale scheletro viene costruito in base alle considerazioni svolte nella fase di analisi;
+<br>
+<table width="100%"  border="1" cellspacing="0" cellpadding="0">
+  <tr>
+    <th scope="col">Obiettivo</th>
+    <th scope="col">Descrizione</th>
+    <th scope="col">Scadenza</th>
+  </tr>
+  <tr>
+    <td class="menu">Scelta di una Architettura Logica </td>
+    <td>si valutano diverse scelte alternative di possibili architetture valutandone i pregi e i difetti, al fine di trovare la migliore per l'applicazione </td>
+    <td align="center"><p>5 giorni</p>
+      </td>
+  </tr>
+</table>
+<br>
+Al termine di questa fase si dovrebbe avere una architettura logica ben definita che carattarizza l'applicazione (vedi <a href="architettura.htm" target="_blank">Architettura</a>);
+</li>
+<br/><a href="#top"><img src="img/freccia_su.gif" border="0"></a>
+<hr>
+<li><h3 id="pro1">Definizione del Primo Prototipo</h3>
+
+  <table width="100%"  border="1" cellspacing="0" cellpadding="0">
+    <tr>
+      <th scope="col">Obiettivo</th>
+      <th scope="col">Descrizione</th>
+      <th align="center" scope="col">Scandenza</th>
+    </tr>
+    <tr>
+      <td class="menu">Creazione di una grammatica generale per Javascript </td>
+      <td>studio di una grammatica generale che permetta di definire il core del linguaggio javascript in ogni sua parte (per lo studio delle grammatiche del linguaggio si veda <a href="grammatiche.htm" target="_blank">grammatiche</a>); </td>
+      <td align="center">8 giorni </td>
+    </tr>
+    <tr>
+      <td class="menu">Creazione della grammatica per il lessico </td>
+      <td>derivazione della grammatica del lessico (grammatica che permette di individuare i token) utilizzata dal lexer per effettuare l'analisi lessicale;</td>
+      <td align="center">1 giorno </td>
+    </tr>
+    <tr>
+      <td class="menu">Creazione del Lexer </td>
+      <td>Creazione della tassonomia di Token e del Lexer in grado di fare l'analisi lessicale della grammatica e fornire in uscita la gerarchia di Token;</td>
+      <td align="center">5 giorni </td>
+    </tr>
+    <tr>
+      <td class="menu">Testing 1 </td>
+      <td>Individuazione dei punti critici e testing dei componenti Token e Lexer con Junit; </td>
+      <td align="center">4 giorni </td>
+    </tr>
+    <tr>
+      <td class="menu">Correzzione errori </td>
+      <td>correzzione degli errori evidenziati dalla fase di testing </td>
+      <td align="center">2 giorni </td>
+    </tr>
+  </table>
+  <br/>
+  Al termine di questa fase si dispone delle grammatica generale di javascript necessaria per procedere attraverso
+  tutte le fasi di riconoscimento e valutazione di un linguaggio. Dalla grammatica generale, infatti verranno ricavate le altre grammatiche
+  necessarie per i vari componenti usati nel riconoscimento di un linguaggio. <br/>
+  Inoltre in tale fase è stato costruito un primo prototipo del lexer gi&agrave; testato.
+</li>
+<br/><a href="#top"><img src="img/freccia_su.gif" border="0"></a>
+<hr>
+<li><h3 id="#pro2">Definizione Secondo Prototipo</h3>
+<table width="100%"  border="1" cellspacing="0" cellpadding="0">
+  <tr>
+    <th scope="col">Obiettivo</th>
+    <th scope="col">Descrizione</th>
+    <th align="center" scope="col">Scadenza</th>
+  </tr>
+  <tr>
+    <td class="menu">Creazione di una grammatica per il parser </td>
+    <td>derivazione dalla grammatica generale della grammatica per il parser, tale grammatica permette di effettuare l'analisi sintattica </td>
+    <td align="center">2 giorni </td>
+  </tr>
+  <tr>
+    <td class="menu">Creazione della grammatica astratta che descrive l'APT</td>
+    <td>derivazione della grammatica generale della grammatica astratta che rappresenta le categorie sintattiche da cui pu&ograve; essere costituita una frase del linguaggio </td>
+    <td align="center">2 giorni </td>
+  </tr>
+  <tr>
+    <td class="menu">Creazione dell'Apt</td>
+    <td>creazione del componente Apt che verr&agrave; realizzato attraverso una gerarchia di classi che rappresentano le varie categorie lessicali del linguaggio </td>
+    <td align="center">5 giorni</td>
+  </tr>
+  <tr>
+    <td class="menu">Creazione del Parser </td>
+    <td>creazione del parser in grado di compiere l'analisi sintattica del linguaggio fornendo in uscita l'apt che rappresenta una particolare frase del linguaggio </td>
+    <td align="center">10 giorni </td>
+  </tr>
+  <tr>
+    <td class="menu">Testing 2 </td>
+    <td>testing dell'Apt e del parser con Junit; </td>
+    <td align="center">8 giorni </td>
+  </tr>
+  <tr>
+    <td class="menu">Correzione errori </td>
+    <td>correzioni degli errori evidenziati dalla fase di testing </td>
+    <td align="center">8 giorni </td>
+  </tr>
+</table>
+<br/>
+Al termine di questa fase si dispone dei componenti Apt e Parser.
+<br/><a href="#top"><img src="img/freccia_su.gif" border="0"></a>
+</li>
+<hr>
+<li><h3 id="#pro3">Definizione Terzo Prototipo</h3>
+<table width="100%"  border="1" cellspacing="0" cellpadding="0">
+  <tr>
+    <th scope="col">Obiettivo</th>
+    <th scope="col">Descrizione</th>
+    <th align="center" scope="col">Scadenza</th>
+  </tr>
+  <tr>
+    <td class="menu">Costruzione di Visitor Valutatore: InterpreterVisitor </td>
+    <td> costruzione del visitor in grado di effettuare l'analisi semantica e quindi l'interpretazione delle frasi del linguaggio </td>
+    <td align="center">20 giorni </td>
+  </tr>
+  <tr>
+    <td class="menu">Testing 3 </td>
+    <td>testing di InterpreterVisitor con Junit; </td>
+    <td align="center">8 giorni </td>
+  </tr>
+  <tr>
+    <td class="menu">Correzione errori </td>
+    <td>correzioni degli errori evidenziati dalla fase di testing </td>
+    <td align="center">5 giorni </td>
+  </tr>
+</table>
+<br>
+Al termine di questa fase avremo a disposizione il visitor che interpreta javascript.
+<br/>
+</li>
+<hr>
+<li><h3 id="pro5">Integrazione</h3>
+<table width="100%"  border="1" cellspacing="0" cellpadding="0">
+  <tr>
+    <th scope="col">Obiettivo</th>
+    <th scope="col">Descrizione</th>
+    <th align="center" scope="col">Scadenza</th>
+  </tr>
+  <tr>
+    <td class="menu">Creazione del controller (Simulator) </td>
+    <td> Creazione del controllor specifico per il sistema che serve a integrare tutti i componenti del sistema, esso verr&agrave; realizzato in modo che il sistema svolga le funzionalit&agrave; specificate nei casi d'uso </td>
+    <td align="center">1giorni </td>
+  </tr>
+  <tr>
+    <td class="menu">Testing 5 </td>
+    <td>testing con Junit; </td>
+    <td align="center">1 giorni </td>
+  </tr>
+  <tr>
+    <td class="menu">Correzione errori </td>
+    <td>correzioni degli errori evidenziati dalla fase di testing </td>
+    <td align="center">1 giorni </td>
+  </tr>
+</table>
+<br/><a href="#top"><img src="img/freccia_su.gif" border="0"></a>
+</li>
+<hr>
+<li>
+  <h3 id="ditr"> Distribuzione</h3>
+  <p>Scopo di questa fase &egrave; costruire i file necessari per la distribuzione dell'applicazione </p>
+  <table width="100%"  border="1" cellspacing="0" cellpadding="0">
+  <tr>
+    <th scope="col">Obiettivo</th>
+    <th scope="col">Descrizione</th>
+    <th align="center" scope="col">Scadenza</th>
+  </tr>
+  <tr>
+    <td class="menu">Creazione dei file per la distribuzione </td>
+    <td>creazione del file Jar necessario per distribuire l'applicazione </td>
+    <td align="center">1 giorni </td>
+  </tr>
+</table>
+<br>
+</li>
+<hr>
+<table align="center">
+	 <tr>
+	 	<td><a href="analisi.htm"><img src="img/freccia_sx.gif" border="0"></a></td> 
+    	<td><a href="introduzione.htm"><img src="img/home.gif" border="0"></a></td>
+		<td><a href="grammatiche.htm"><img src="img/freccia_dx.gif" border="0"></a></td>
+  	</tr>
+</table>
+</body>
+</html>

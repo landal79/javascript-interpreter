@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Documento senza titolo</title>
+<link href="css/main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h2 align="center" id="title">Alberi di derivazione</h2>
+	<hr>
+	<ol>
+	<li><a href="#def">Definizione di albero di derivazion</a>e</li>
+	<li><a href="#sint">Sintassi astratta</a></li>
+	<li><a href="#apt">Abstract Parse Tree</a></li>
+	</ol>
+	<hr>
+	<h3 id="def">Definizione di albero di derivazione</h3>
+	<p>
+	<ul>
+		<li>Se G è una grammatica context-free si può introdurre il concetto di <i>albero di derivazione</i>:
+		<ul>
+		<br>
+			<li>ogni <i>nodo dell'albero</i> è associato a un <b>simbolo</b> del vocabolario V = VT U VN</li>
+			<br/>&nbsp;
+			<li>la <i>radice</i> dell'albero coincide con lo <i>scopo</i> S</li>
+			<br/>&nbsp;
+			<li>se a1, a2, ..., ak sono i k figli ordinati di un dato nodo x (associato al simbolo non-terminale X) allora la grammatica G prevede la produzione:<br>
+			 <i>X ::= A1 A2 ... Ak</i> , dove <i>Ai</i> è il simbolo associato al nodo <i>ai</i>.</li>
+		</ul>
+		</li>
+	</ul>
+	</p>
+	<a href="#title"><img src="IMG/freccia_su.gif" border="0"></a>
+	<hr>
+	<h3 id="sint">Sintassi Astratta</h3>
+	<p>
+	<ul>
+ 		<li>Con una grammatica context-free è possibile descrivere la struttura delle frasi di un linguaggio, cioè la cosiddetta sintassi concreta del linguaggio. Questa grammatica è costruita in modo che il linguaggio, oltre ad essere ben definito, risulti chiaro per chi legge. Quindi questa grammatica include molti elementi introdotti per rendere chiaro il linguaggio.</li>
+		<br/>&nbsp;
+		<li>Le frasi internamente all'interprete vengono rappresentate attraverso un <i>albero di derivazione</i>, però tale albero non può essere costruito usando la sintassi concreta.</li>
+		<br/>&nbsp;
+		<li>Molti simboli della sintassi concreta del linguaggio non sono legati a nulla di significativo sul piano semantico, questi simboli non terminali pur indispensabili nella costruzione delle frasi, possono essere omessi nella rappresentazione interna delle frasi.</li>
+		<br/>&nbsp;
+		<li>L'eliminazione dalla sintassi concreta di tutti gli elementi inutili produce una descrizione del linguaggio detta <i>sintassi astratta</i>.</li>
+	</ul>
+	</p>
+	<a href="#title"><img src="IMG/freccia_su.gif" border="0"></a>
+	<hr>
+	<h3 id="apt">Abstract Parse Tree</h3>
+	<p>
+	<ul>
+		<li>L'Abstract Parse Tree è la rappresentazione interna di una frase di un linguaggio seconda la sintassi astratta.</li>
+		<br/>&nbsp;
+		<li>Un apt viene costruito dal riconoscitore del linguaggio. Essi sono usati per aumentare la modularità di compilatori e interpreti: consentono di separare l'analisi sintattica (parsing) dall'analisi semantica. Esso è di solito costruito dal parser del linguaggio.</li>
+		<br/>&nbsp;
+		<li>L'analizzatore sintattico (parser) procede in modo sistematico e top-down alla costruzione dell'apt, partendo dall'assunzione che la rappresentazione dell'albero è descritta dalla grammatica.</li>
+		<br/>&nbsp;
+		<li>Costruzione dell'apt:<br/>
+			<ul>
+			<li>si introducono tanti ADT quanti i simboli non terminali;</li>
+			<br/>&nbsp;
+			<li>ciascun ADT viene specializzato da tanti sottotipi (concreti) quante le regole di produzione;</li>
+			<br/>&nbsp;
+			<li>ogni simbolo non-terminale che compare nella parte destra di una produzione definisce un componente della struttura del sottotipo corrispondente a quella produzione;</li>
+			</ul>	
+		</li>
+	</ul>
+	</p>
+	<a href="#title"><img src="IMG/freccia_su.gif" border="0"></a>
+	<hr>
+	<table align="center">
+  <tr> 
+    <td><a href="ll.htm"><img src="img/freccia_sx.gif" width="30" height="30" border="0"></a></td>
+    <td><a href="definizione.htm"><img src="IMG/HOME.GIF" border="0"></a></td>
+    <td><img src="IMG/SPACE.GIF" border="0"></td>
+  </tr>
+</table>
+</body>
+</html>

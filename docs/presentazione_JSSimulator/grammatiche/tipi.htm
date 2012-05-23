@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Documento senza titolo</title>
+<link href="css/main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h2 align="center" id="title">Tipi di Grammatiche</h2>
+	<hr>
+	<ol>
+	<li><a href="#chom">Classificazione di Chomsky</a></li>
+	<li><a href="#self">Self-Embedding</a></li>
+	</ol>
+	<hr>
+	<h3 id="chom">Classificazione di Chomsky</h3>
+	<p>
+	<ul>
+	Le grammatiche sono classificate in 4 tipi in base alla struttura delle produzioni:
+	<br/>&nbsp;
+  <li><strong>Tipo 0</strong>: nessuna restrizione sulle produzioni</li>
+	<br/>&nbsp;
+  <li><strong>Tipo 1</strong> <em>(dipendenti dal contesto)</em>: <br/>
+	produzioni vincolate alla forma: <br/>
+    <em>x A y -&gt; x &alpha; y </em><br/>
+	con x,y,a appartenenti a (VT U VN)*, A appartenente a VN, a non deve essere la stringa vuota</li>
+	<br/>&nbsp;
+  <li><strong>Tipo 2</strong> <em>(libere da contesto)</em>: <br/>
+    <em>A -&gt; &alpha;</em> <br/>
+	con a appartenente a (VT U VN)*, A appartenente a VN</li>
+<br/>&nbsp;
+  <li><strong>Tipo 3</strong> <em>(grammatiche regolari)</em>:</br> produzioni 
+    vincolate alle forme lineari:</br> lineare a destra: <em>A -&gt; &sigma; | 
+    &sigma;B</br> </em> lineare a sinistra: <em>A -&gt; &sigma; | B&sigma;</br> 
+    </em>con A,B appartenenti a VN e &sigma; appartenente a VT*</li>
+	</ul>
+	</p>
+	<a href="#title"><img src="IMG/freccia_su.gif" border="0"></a>
+	<hr>
+	<h3 id="self">Self-Embedding</h3>
+	<p>
+	<ul>
+	<li>con tale regola possiamo distinguere le grammatiche di tipo 2 da quelle di tipo 3;</li>
+	<br/>&nbsp;
+	<li>Se una grammatica G contiene un simbolo non terminale A tale che:</br>
+	<br/>
+	&nbsp;&nbsp;&nbsp;&nbsp;A -&gt; &alpha; A &beta; <br/>
+	A si dice <i>autoinclusiva (self-embedded)</i>, la grammatica G si dice contenere self-embedding.</li>
+	<br/>&nbsp;
+	<li><b>Teorema: una grammatica context-free che non contenga self-embedding genera un linguaggio regolare.</b></li>
+	<br/>&nbsp;
+	<li>Dunque, una grammatica context-free che non contenga self-embedding ammette una grammatica equivalente regolare.</li>
+	</ul>
+	</p>
+	<a href="#title"><img src="IMG/freccia_su.gif" border="0"></a>
+	<hr>
+	<table align="center">
+  <tr> 
+    <td><a href="definizione.htm"><img src="img/freccia_sx.gif" width="30" height="30" border="0"></a></td>
+    <td><a href="definizione.htm"><img src="IMG/HOME.GIF" border="0"></a></td>
+    <td><a href="ll.htm"><img src="img/freccia_dx.gif" width="30" height="30" border="0"></a></td>
+  </tr>
+</table>
+</body>
+</html>

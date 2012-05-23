@@ -1,0 +1,256 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Documento senza titolo</title>
+<link href="css/main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<img src="img/progetto.jpg" width="300" height="60">
+<hr>
+<h3>Visitor Interprete</h3>
+<ul>
+	<li>
+	Il Visitor è il componente software che esegue l'elaborazione dell'apt 
+	costruito dal parser. Esso riceve in ingresso le frasi del linguaggio sotto 
+	forma di apt (Abstract Parse Tree), completa l'analisi semantica prazialmente 
+	eseguita dal parser ed infine fornisce in uscita l'elaborazione della frase. Le 
+	elaborazioni che si possono fare della frase sono diverse si può darne una 
+	rappresentazione esterna grafica, la si può riscrivere in un altro linguaggio 
+	per esempio linguaggio assembler, oppure si può fornire una valutazione della 
+	frase, cioè la si interpreta, in questo caso si ha un interprete.
+	</li>
+	<h4>Pattern Visitor</h4>
+	<li>
+	Per compiere la valutazione dell'albero si userà il pattern di progettazione <i>visitor.</i>
+	Il visitor è un componente software che concilia due diversi stili di 
+	programmazione: oggetti e funzionale. Esso si basa sul seguente concetto:
+	<br>               					
+		<ul>
+			<li>
+			mantenere l'unitarietà (concettuale e fisica) della funzione di interpretazione 
+			localizzandola in un solo oggetto: il visitor, come nell'approccio funzionale:
+			</li>
+			<br/>&nbsp;
+			<li>
+			inoltre, mantenere anche la possibilità di porre in ogni classe il "pezzo di 
+			funzione" che la riguarda.
+			</li>
+		</ul>
+	</li>
+	<br/>
+	<li>Tutto ciò è realizzato mediante la tecnica del <i>double-dispatch</i>, che è 
+	così realizzata:<br>
+		<ul>
+			<li> 
+			la funzione di interpretazione è tutta in unico posto il visitor (metodologia 
+			funzionale); l'operazione fondamentale fornita dal visitor è <b>visit</b>, e ne 
+			esiste una per ogni oggetto della tassonomia dell'apt, quindi visit è una 
+			funzione polimorfa (metologia ad oggetti);
+			</li>
+			<br/>&nbsp;
+			<li>
+			il visitor grazie al double-dispatch percorre l'albero nel seguente modo: ogni 
+			oggetto della tassonomia di istruzioni prevede un'operazione <b>accept</b> che 
+			accetta la visita del visitor e la realizza rimpallando l'azione sul visitor e 
+			passando se stesso come oggetto da visitare, nel seguente modo:&nbsp;
+			</li>					  
+			<p><b>void accept (visitor v){ v.visit (this); </b></p>	
+		</ul>
+	</li>
+	<li>
+	Inanzitutto definisco una interfaccia che chiamo <b>IVisitor</b> che definisce 
+	l'insieme dei metodi che la classe interprete dovrà implementare per realizzare 
+	l'interpretazione della frase. Questa interfaccia andrà implementata da ogni 
+	altra classe che vorrà produrre un altro dei tipi di elaborazione che si 
+	possono fare della frase.</li>
+	<br/>&nbsp;	
+	<li>
+	L'interfaccia contiene un'unica funzione polimorfa <b>visit</b> ne esiste una 
+	per ogni oggetto che può far parte dell'apt.
+	</li>
+	<br/>&nbsp;
+	<li> 
+	La classe che effettivamente implementerà l'interfaccia e realizzerà l'interpretazione si chiama: <b>InterpreterVisitor</b>.
+	</li>	
+	<h4>Ambiente di esecuzione</h4>
+	<LI>Per realizzare l'interpretazione di un programma Javascript, il visitor necessita di altre strutture di supporto all'esecuzione del programma, in altre parole per eseguire un programma javascript &egrave; necessario creare un ambiente di esecuzione. <BR>
+	&nbsp;
+	<LI>L'<B>Ambiente di esecuzione</B> di un programma &egrave; costituito da tutti quegli elementi che  permettono all'interprete di svolgere il proprio compito, inanzitutto, quando inizia l'esecuzione di un programma esiste <B>l'ambiente globale</B>, nel caso di javascript &egrave; cos&igrave; costituito:<BR>
+	&nbsp;
+		<UL>
+			<LI><I>Tabella delle variabili globali</I>: essa contiene tutte le variabili definite in ambito globale con associato il relativo valore, che pu&ograve; essere uno qualsiasi dei tipi di dati permessi da javascript;</li>
+			<BR>&nbsp;
+			<LI>Uno <I>Stack di attivazione</I>, per le chiamate delle funzioni;</LI>			
+		</UL>
+	</li>
+	<BR>&nbsp; 
+	<LI>L'<strong><em>ambiente globale</em></strong> &egrave; una astrazione che catturer&ograve; attraverso l'oggetto <I>AmbienteDef</I>, il quale oltre alle strutture dati sopra citate, avr&agrave; dei metodi che restituiranno i valori delle variabili e gestir&agrave; lo stack di attivazione;</li>
+	<BR>&nbsp;
+  <LI><strong><I>Tabella variabili globali</I></strong>: in javascript le variabili sono debolmente tipate, cio&egrave; &egrave; possibile assegnare ad una variabile qualsiasi tipo di dato (numeri, stringhe, oggetti, array, funzioni, costruttori). La tabella delle variabili globali verr&agrave; implementata utilizzando un <I>Hashtable</I>, nel cui campo chiave ci sar&agrave; l'identificatore della variabile, mentre nel campo valore, il valore della variabile, che sar&agrave; uno dei possibili tipi di dato ammessi in javascript;</LI>	
+  <br/>&nbsp;
+  <li><strong><em>Stack di attivazione:</em></strong>
+    <ul>
+<li>
+lo stack di attivazione non è altro che una struttura dati LIFO, che conterrà i 
+vari ambienti locali, in cui opereranno le funzioni; gli ambienti locali sono 
+una astrazione catturata dall'oggetto <i>Record di Attivazione</i>;</li>
+<li>lo stack di attivazione è gestito dall'ambiente di definizione attraverso i metodi, push e pop, che servono
+rispettivamente a inserire ed estrarre record dallo stack;</li>
+</ul>
+</li>
+<br />
+&nbsp;
+<li>
+<strong><i>Record di Attivazione</i></strong>: questo oggetto contiene tutte le informazioni, 
+riguardanti l'ambiente locale, di cui le funzioni necessitano per la loro esecuzione; le informazioni sono le seguenti:<br />
+<ul>
+<li>
+<i>Tabella delle variabili locali</i>: essa conterrà sia i parametri (a cui 
+sono stati associati dei valori) della funzione, sia le variabili locali 
+definite all'interno della funzione;</li><br />
+&nbsp;
+<li>
+<i>Riferimento al record di attivazione precedente</i>: serve a ricercare le 
+variabili nel caso non siano definite localmente alla funzione; cioè si risale 
+la catena di record di attivazione fino a trovare la variabile (la catena viene 
+risalita finchè ci si trova in ambito locale, secondo la regola della chiusura 
+lessicale), oppure fino a giungere all'ambiente globale, nel caso non sia stata 
+trovata allora viene definita una nuova variabile globale;;</li><br />
+&nbsp;
+<li>
+<i>Ambito</i>: è un campo che mi indica se la funzione è definita localmente o 
+globalmente; esso può contenere solo due valori costanti: GLOBAL o LOCAL; In 
+questo modo realizzo la chiusura lessicale;</li><br />
+&nbsp;
+</ul>
+</li>
+<h4><em><strong>Flag di Stato</strong></em></h4>
+<li> lo stato dell'interprete &egrave; completato da un inisieme di flag che insieme all'ambiente globale rappresentano lo stato dell'interprete, il quale agir&agrave; nelle diverse situazioni a seconda dei valori dei flag; insieme dei flag:
+	<br/>&nbsp;
+	<ul>
+		<li><i>ambitoFlag</i>: indica in che ambito si sta operando, globale o locale;</li>
+		<li><i>breakFlag</i>: indica se è stata incontrata una istruzione break;</li>
+		<li><i>noBreakFlag</i>: indica se è ammessa un'operazione break;</li>
+		<li><i>continueFlag</i>: indica se è stata incontrata un'istruzione continue;</li>
+		<li><i>noContinueFlag</i>: indica se è ammessa una istruzione continue;</li>
+		<li><i>returnFlag</i>: indica se è stata incontrata un'istruzione return;</li>
+		<li><i>noReturnFlag</i>: indica se è ammessa un'istruzione return;</li>
+		<li><i>funAnnFlag</i>: indica se è ammessa la definizione di funzioni annidate;</li>
+		<li><i>funCallFlag</i>: indica se si sta invocando una funzione;</li>
+		<li><i>paramFlag</i>: indica se si stanno parametri a una funzione;</li>
+		<li><i>switchExp</i>: indica se è stata incontrata un'istruzione switch;</li>
+	</ul>
+</li>
+<br/>&nbsp;
+<li>il diagramma della parte fondamentale è il seguente:</li>
+<p align="center"><img src="img/visitordiag.JPG"></p>
+<h4>Tipi di Dato</h4>
+<li>L'interprete opera principalmente sui dati, quindi un'altra parte fondamentale dell'interprete sono i dati che gestisce.</li>
+<br/>&nbsp;
+<li>I <b>tipi di dato javascript</b> sono: numeri, stringhe, array, oggetti, 
+funzioni; ora per implementare questi tipi di dato utilizzando Java, ho fatto 
+le seguenti scelte, considerando anche le proprietà che tali dati hanno in 
+javascript:<br />
+&nbsp;
+<ul>
+	<li>
+		<b>Numeri</b>: utilizzo la classe wrapper <i>Double</i>, dato che in generale 
+		in javascript sono tutti numeri reali;</li><br />
+	&nbsp;
+	<li>
+		<b>Stringhe</b>: utilizzo la classe <i>String</i>;</li><br />
+	&nbsp;
+	<li>
+		<b>Booleani</b>: utilizzo la classe wrapper <i>Boolean</i>;</li><br />
+	&nbsp;
+	<li>
+		<b>Array</b>:
+		<br/>&nbsp;	
+	  <ul>
+		    <li>
+			    per gli array creo la classe <i>Vettore</i>, che implementerà l'astrazione 
+			    array di javascript;</li>
+		    <li>l'oggetto vettore conterrà una lista di tanti oggetti <i>Comp </i> che rappresentano le 
+			    componenti del vettore; l'oggetto Componente ha 2 campi: indice della componente e valore;</li>
+		    <li>
+			    la classe Vettore fornirà tutti i metodi necessari per aggiugere, prelevare e 
+			    modificare componenti del vettore;</li>
+	    </ul>
+	  </li>
+	<br />
+	&nbsp;
+	<li>
+		<b>Oggetti</b>:
+		<br/>&nbsp;
+		<ul>
+			<li>
+				per gli oggetti creo un classe <i>Oggetto</i>, che fornisce tutte le funzioni 
+				di un oggetto javascript;</li>
+			<li>
+				la classe Oggetto conterrà una lista di  tanti oggetti <i>Prop</i>, che 
+				rappresentano le proprietà di un oggetto; l'oggetto Prop è così composto: un campo per il nome della proprietà e un campo per il valore;</li>
+			<li>
+				inoltre la classe Oggetto fornirà tutti i metodi necessari per creare, 
+				modificare e reperire le proprietà di un oggetto;</li>
+		</ul>
+	</li>
+	<br />
+	&nbsp;
+	<li>
+		<b>Funzioni</b>:
+		<ul>
+			<li>
+				Oggetto <i>Funzione</i>:
+				<br/>&nbsp;
+				<ul>
+					<li>
+						un campo per i parametri della funzione: gli identificatori dei parametri sono 
+						contenuti in un oggetto ArgList;</li>
+					<li>
+						un campo per il codice della funzione: il codice della funzione non è altro che 
+						la parte di albero costruita dal parser che rappresenta il corpo della 
+						funzione;</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+	 
+	<li>
+		<b>Costruttori</b>:
+		<br/>&nbsp;
+		<ul>
+			<li>
+				Oggetto <i>Costruttore</i>:
+				<ul>
+					<li>
+						un campo per i parametri del costruttore: gli identificatori dei parametri sono 
+						contenuti in un oggetto ArgList;</li>
+					<li>
+						un campo per il codice del costruttore: il codice del costruttore non è altro 
+						che la parte di albero costruita dal parser che rappresenta il corpo del 
+						costruttore;</li>
+				</ul>
+			</li>
+		</ul>
+	</li>
+</ul>
+</li>
+<li>Diagramma dei dati:</li>
+<p align="center"><img src="img/datatypediag.JPG"></p>
+<br/>&nbsp;
+<li>Per le classi vettore, oggetto, funzione e costruttore ho specializzato le classi di utility nel seguente modo:</li>
+<p align="center"><img src="img/VettoriDiag.JPG"></p>
+</ul>
+<hr>
+<table align="center">
+	 <tr> 
+    	<td><a href="parser.htm"><img src="img/freccia_sx.gif" border="0"></a></td>
+    	<td><a href="introduzione.htm" onClick="parent.leftFrame.location='sommario.htm';"><img src="img/home.gif" border="0"></a></td>
+    	<td><a href="controller.htm" ><img src="img/freccia_dx.gif" border="0"></a></td>
+  	</tr>
+</table>	
+</body>
+</html>

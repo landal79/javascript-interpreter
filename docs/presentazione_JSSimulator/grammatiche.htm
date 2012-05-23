@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Documento senza titolo</title>
+<link href="css/main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<p><img src="img/grammatichet.jpg" width="300" height="60" id="title">
+</p>
+<table width="100%"  border="0" cellspacing="10" cellpadding="0">
+  <tr>
+    <td><img src="img/pall.gif" width="10" height="13"> <a href="#gen">Grammatica generale</a> </td>
+    <td><img src="img/pall.gif" width="10" height="13"> <a href="#les">Grammatica del lessico</a></td>
+  </tr>
+  <tr>
+    <td><img src="img/pall.gif" width="10" height="13"> <a href="#par">Grammatica per il Parser</a> </td>
+    <td><img src="img/pall.gif" width="10" height="13"> <a href="#apt">Grammatica APT</a> </td>
+  </tr>
+</table>
+<hr>
+<p class="txt" align="justify">  
+	Ogni linguaggio è descritto dalla relativa grammatic, javascript non fa eccezione, quindi ci proponiamo ora
+di studiare la grammatica che lo descrive, la grammatica generale, per poi ricavare da quest'ultima le altre altrettanto 
+fondamentali nelle varie fasi di riconoscimento del linguaggio. Relativamente alle varie grammatiche ne 
+verranno studiate le caratteristiche peculiari, in particolari ci si chieder&agrave; se la grammatica facilita la costruzione 
+del relativo componente e se &egrave; possibile ricavarne una migliore. </p>
+<p class="txt" align="justify">Nel riconoscimento delle frasi di un linguaggio si devono eseguire le seguenti 
+fasi: analisi lessicale, analisi sintattica, eventuale costruzione di una rappresentazione interna della 
+frase sotto forma di albero: ognuna di queste operazioni si appoggia a una particolare grammatica, 
+derivata da quella generale, quindi le grammatiche sono 4, e precisamente: </p>
+  <ul>
+  	<li>Grammatica generale;</li>
+	<br/>&nbsp;
+	<li>Grammatica del Lessico (descrive le varie categorie sintattiche e usata dal Lexer per compiere l'analisi lessicale);</li>
+	<br/>&nbsp;
+	<li>Grammatica per il Parser (usata dal parser per compiere l'analisi sintattica);</li>
+	<br/>&nbsp;
+	<li>Grammatica APT (descrivere le varie categorie sintattiche e viene usata per costruire l'Apt);</li>
+  </ul>
+  <p align="justify"  class="txt">(nella sezione del <a href="glossario.htm" target="_self">glossario</a> viene una spiegazione sui concetti fondamentali delle grammatiche)</p>
+<hr>
+	<h3 id="gen">Grammatica generale</h3>
+	<p>
+	
+<ul>
+	<li>Questa grammatica definisce la grammatica generale del linguaggio, in essa 
+    sono contenute tutte le produzioni che definiscono il linguaggio.</li>
+	<br/>&nbsp;
+	<li>La grammatica generale del linguaggio è di tipo 2, come si può vedere dalla forma delle produzioni, del tipo, 
+	&nbsp;<em>A -&gt; &alpha;</em>, inoltre al suo interno sono presenti dei self-embedding, come si vede dalle produzione che hanno la seguente forma A -&gt; &alpha; A &beta;.</li>
+	<br/>&nbsp;
+	<li>I self-embedding non sono eliminabili, quindi questa grammatica di tipo 2 libera da contesto, non è trasformabile in una grammatica di tipo 3 regolare.</li>
+	<br>&nbsp;
+	<li>vedi <a href="generale.htm" target="_blank">Grammatica Generale</a>;</li>
+</ul>
+</p>
+<a href="#title"><img src="IMG/freccia_su.gif" border="0"></a>
+<hr>
+<h3 id="les">Grammatica del Lessico</h3>
+<p>
+<ul>
+	<li>Questa è la grammatica che verrà usata dal lexer per effettuare l'analisi lessicale, essa &egrave; un sottoinsieme della grammatica generale, precisamente &egrave; quella parte che contiene tutte le categorie lessicali del linguaggio, cioè tutti i possibili simboli che 
+	possono comporre le frasi appartenenti al linguaggio.</li>
+	<br/>&nbsp;
+	<li>Le categorie lessicali che ci riguardano sono: numeri interi, numeri reali, stringhe, boolean, identificatori, simboli speciali.</li>
+	<br>&nbsp;
+	<li>Questa grammatica &egrave; di tipo 2, quindi il relativo automa riconoscitore &egrave; un Automa a Stati con Stack, &egrave; possibile applicare l'analisi ricorsiva discendente per costruirlo; </li>
+	<br/>&nbsp;
+	<li>vedi <a href="lessico.htm" target="_blank">Grammatica del Lessico</a>;</li>
+</ul>
+</p>
+<a href="#title"><img src="IMG/freccia_su.gif" border="0"></a>
+<hr>
+<h3 id="par">Grammatica per il Parser</h3>
+<p>
+<ul>
+	<li>Questa è la grammatica usata dal parser per compiere l'analisi sintattica delle frasi del linguaggio, tale grammatica è derivata dalla grammatica generale.</li>
+	<br/>&nbsp;
+	<li>La grammatica del parser deve essere LL(1) <a href="grammatiche/ll.htm#1" target="_blanck"></a>, questa caratteristica della grammatica rende possibile la costruzione di automi riconoscitori attraverso l'analisi ricoriva discendente. </li>
+	<br/>&nbsp;
+	<li>Alla grammatica generale sono state applicate le tecniche di eliminazione della ricorsione sinistra, perchè come sappiamo le grammatiche che contengono ricorsione sinistra non sono LL(1), e la fattorizzazione. Inoltre le produzioni sono state riscritte usando la notazione EBNF per rendere più semplice la scrittura del riconoscitore.</li>
+	<br/>&nbsp;
+	<li>La grammatica ottenuta non è tuttavia LL(1), infatti sono presenti due produzioni: EXP-ASSIGN e EXP-POST; che non sono LL(1), in quanto per EXP-ASSIGN non è possibile distinguere fra le due produzioni alternative <i>EXP-COND</i> e <i>EXP-VAR-LEFT = EXP-ASSIGN</i> usando solo il primo simbolo terminale, così pure per EXP-POST in cui non è possibile distinguere fra le produzioni alternative <i>EXP-VAR-RIGHT</i> e <i>EXP-VAR-LEFT seguito da post decremento o incremento</i>. Quindi la grammatica è LL(k). Ho deciso comunque di applicare l'analisi ricorsiva discendente e usare una coda per verificare nei due casi sopra citati quale produzione applicare.</li>
+	<br/>&nbsp;
+	<li>vedi <a href="gparser.htm" target="_blank">Grammatica per il Parser</a>;</li>
+</ul>
+</p>
+<a href="#title"><img src="IMG/freccia_su.gif" border="0"></a>
+<hr>
+<h3 id="apt">Grammatica per l'APT</h3>
+<p>
+<ul>
+	<li>Questa grammatica contiene la <a href="grammatiche/alberi.htm#sint" target="_blank">sintassi astratta</a> del linguaggio che serve a costruire l'<a href="grammatiche/alberi.htm#apt">apt</a>.</li>
+	<br/>&nbsp;
+	<li>vedi <a href="apt.htm" target="_blank">Grammatica APT</a>;</li>
+</ul>
+</p>
+<a href="#title"><img src="IMG/freccia_su.gif" border="0"></a>
+<hr>
+<table align="center">
+	 <tr> 
+    	<td><a href="piano.htm"><img src="img/freccia_sx.gif" width="30" height="30" border="0"></a></td>
+    	<td><a href="introduzione.htm"><img src="IMG/HOME.GIF" border="0"></a></td>
+    	<td><a href="architettura.htm"><img src="img/freccia_dx.gif" width="30" height="30" border="0"></a></td>
+  	</tr>
+</table>	
+
+</body>
+</html>

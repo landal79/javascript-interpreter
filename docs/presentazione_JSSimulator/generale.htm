@@ -1,0 +1,381 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Grammatica generale</title>
+<link href="css/gram.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<img src="img/generale.jpg" width="500" height="60">
+<hr>
+<table>
+			<tbody>
+				<tr>
+					<td>ISTR ::= ISTR-VUOTA</td>
+				</tr>
+				<tr>
+					<td>ISTR ::= ISTR-LABEL</td>
+				</tr>
+				<tr>
+					<td>ISTR ::= ISTR-EXP</td>
+				</tr>
+				<tr>
+					<td>ISTR ::= ISTR-COMPOSTA</td>
+				</tr>
+				<tr>
+					<td>ISTR ::= ISTR-SELEZIONE</td>
+				</tr>
+				<tr>
+					<td>ISTR ::= ISTR-ITERAZIONE</td>
+				</tr>
+				<tr>
+					<td>ISTR ::= ISTR-SALTO</td>
+				</tr>
+				<tr>
+					<td>ISTR ::= ISTR-DEFINIZIONE</td>
+				</tr>
+				<tr>
+					<td>ISTR-VUOTA ::= <i>;</i></td>
+					<td>istruzione vuota</td>
+				</tr>
+				<tr>
+					<td>ISTR-LABEL ::= <i>case</i> EXP-COND<i>:</i> ISTR</td>
+				</tr>
+				<tr>
+					<td>ISTR-LABEL ::= <i>default :</i> ISTR</td>
+				</tr>
+				<tr>
+					<td>ISTR-EXP ::= EXP <i>;</i></td>
+				</tr>
+				<tr>
+					<td>ISTR-COMPOSTA ::= <i>{</i> LISTA-ISTR <i>}</i></td>
+					<td>blocco di istruzioni</td>
+				</tr>
+				<tr>
+					<td>LISTA-ISTR ::= ISTR | ISTR LISTA-ISTR</td>
+				</tr>
+				<tr>
+					<td>ISTR-SELEZIONE ::= <i>if (</i> EXP <i>)</i> ISTR</td>
+					<td>istruzione di selezione</td>
+				</tr>
+				<tr>
+					<td>ISTR-SELEZIONE ::= <i>if (</i> EXP <i>)</i> ISTR <i>else</i> ISTR</td>
+					<td>istruzione di selezione con else</td>
+				</tr>
+				<tr>
+					<td>ISTR-SELEZIONE ::= <i>switch (</i> EXP <i>) </i>ISTR</td>
+					<td>selezione multipla</td>
+				</tr>
+				<tr>
+					<td>ISTR-ITERAZIONE ::= <i>while (</i> EXP <i>)</i> ISTR</td>
+					<td>ciclo while</td>
+				</tr>
+				<tr>
+					<td>ISTR-ITERAZIONE ::= <i>do</i> ISTR <i>while (</i> EXP <i>) ;</i></td>
+					<td>
+						ciclo do</td>
+				</tr>
+				<tr>
+					<td>ISTR-ITERAZIONE ::= <i>for (</i> [EXP] <i>;</i> [EXP] <i>;</i> [EXP] <i>)</i> ISTR</td>
+					<td>ciclo for</td>
+				</tr>
+				<tr>
+					<td>ISTR-ITERAZIONE ::= <i>for (</i> DEF-VAR-IN <i>in</i> EXP-VAR-RIGHT <i>)</i> ISTR</td>
+					<td>ciclo for/in</td>
+				</tr>
+				<tr>
+					<td>ISTR-SALTO ::= <i>continue;</i> | <i>break;</i> | <i>return</i> [EXP] <i>;</i></td>
+				</tr>
+				<tr>
+					<td>ISTR-DEFINIZIONE ::= DEF-VAR | DEF-FUN</td>
+				</tr>
+				<tr>
+					<td>DEF-VAR ::= <i>var</i> LISTA-DEF <i>;</i></td>
+					<td>definizione esplicita di variabili</td>
+				</tr>
+				<tr>
+					<td>DEF-VAR-IN ::= <i>var</i> LISTA-DEF </td>
+					<td>definizione esplicita di variabili per ciclo for-in</td>
+				</tr>
+				<tr>
+					<td>LISTA-DEF ::= IDENT [<i> =</i> EXP ]<i> ,</i> LISTA-DEF | IDENT [<i> =</i> EXP 
+						]</td>
+				</tr>
+				<tr>
+					<td>DEF-FUN ::= <i>function</i> IDENT <i>( </i>[LISTA-PARAMETRI] <i>) {</i> LISTA-ISTR
+						<i>}</i></td>
+					<td>definizione di funzione</td>
+				</tr>
+				<tr>
+					<td>DEF-COSTR ::= <i>function</i> IDENT <i>( </i>[LISTA-PARAMETRI] <i>) {</i> ISTR-COSTR<i>
+							}</i></td>
+					<td>definizione di costruttore di oggetto</td>
+				</tr>
+				<tr>
+					<td>ISTR-COSTR ::=&nbsp; THIS ISTR-COSTR | THIS
+					</td>
+				</tr>
+				<tr>
+					<td>THIS ::= <i>this.</i> IDENT <i>=</i> EXP-ASSIGN <i>;</i></td>
+					<td>istruzioni all'interno del costruttore</td>
+				</tr>
+				<tr>
+					<td>LISTA-PARAMETRI ::= IDENT <i>,</i> LISTA-PARAMETRI | IDENT</td>
+					<td>parametri funzione</td>
+				</tr>
+				<tr>
+					<td>EXP ::= EXP-ASSIGN</td>
+				</tr>
+				<tr>
+					<td>EXP ::= EXP-ASSIGN<i>,</i> EXP</td>
+					<td>sequenza di espressioni</td>
+				</tr>
+				<tr>
+					<td>EXP-ASSIGN ::= EXP-NEW</td>
+				</tr>
+				<tr>
+					<td>EXP-ASSIGN ::= OGGETTO</td>
+				</tr>
+				<tr>
+					<td>EXP-ASSIGN ::= ARRAY</td>
+				</tr>
+				<tr>
+					<td>EXP-ASSIGN ::= FUNZ</td>
+				</tr>
+				<tr>
+					<td>EXP-ASSIGN ::= <i>null</i></td>
+				</tr>
+				<tr>
+					<td>EXP-ASSIGN ::= EXP-COND</td>
+				</tr>
+				<tr>
+					<td>EXP-ASSIGN ::= EXP-VAR-LEFT <i>=</i> EXP-ASSIGN</td>
+					<td>espressione assegnamento</td>
+				</tr>
+				<tr>
+					<td>EXP-NEW ::= <i>new </i>IDENT <i>(</i> [LISTA-ARG-EXP] <i>)</i></td>
+					<td>costruzione nuovo oggetto</td>
+				</tr>
+				<tr>
+					<td>OGGETTO ::= <i>{</i> LISTA-PROP <i>}</i></td>
+					<td>definizione letterale oggetto</td>
+				</tr>
+				<tr>
+					<td>LISTA-PROP ::= IDENT <i>:</i> ELEMENTO <i>, </i>LISTA-PROP | IDENT <i>:</i> ELEMNTO</td>
+				</tr>
+				<tr>
+					<td>ARRAY ::= <i>[</i> LISTA-EL <i>]</i></td>
+					<td>definizione letterale array</td>
+				</tr>
+				<tr>
+					<td>LISTA-EL ::= ELEMENTO <i>, </i>LISTA-EL | ELEMENTO</td>
+					<td>elementi array</td>
+				</tr>
+				<tr>
+					<td>ELEMENTO ::= NUM | STRINGA | OGGETTO | BOOLEANO | ARRAY | EXP-ASSIGN</td>
+				</tr>
+				<tr>
+					<td>FUNZ ::= <i>function ( </i>[LISTA-PARAMETRI] <i>) {</i> LISTA-ISTR <i>}</i></td>
+					<td>definizione funzione senza identificatore</td>
+				</tr>
+				<tr>
+					<td>EXP-COND ::= EXP-OR-LOGICO</td>
+				</tr>
+				<tr>
+					<td>EXP-COND ::= EXP-OR-LOGICO <i>?</i> EXP <i>:</i> EXP</td>
+					<td>operatore condizionale</td>
+				</tr>
+				<tr>
+					<td>EXP-OR-LOGICO ::= EXP-AND-LOGICO
+					</td>
+				</tr>
+				<tr>
+					<td>EXP-OR-LOGICO ::= EXP-OR-LOGICO <i>||</i> EXP-AND-LOGICO</td>
+					<td>or logico</td>
+				</tr>
+				<tr>
+					<td>EXP-AND-LOGICO ::= EXP-UGUAGLIANZA
+					</td>
+				</tr>
+				<tr>
+					<td>EXP-AND-LOGICO ::= EXP-AND-LOGICO <i>&amp;&amp; </i>EXP-UGUAGLIANZA</td>
+					<td>and logico</td>
+				</tr>
+				<tr>
+					<td>EXP-UGUAGLIANZA ::= EXP-RELAZIONALE | BOOLEAN</td>
+				</tr>
+				<tr>
+					<td>EXP-UGUAGLIANZA ::= EXP-UGUGLIANZA <i>==</i> EXP-RELAZIONALE</td>
+					<td>uguaglianza</td>
+				</tr>
+				<tr>
+					<td>EXP-UGUAGLIANZA ::= EXP-UGUAGLIANZA <i>!=</i> EXP-RELAZIONALE</td>
+					<td>disuguaglianza</td>
+				</tr>
+				<tr>
+					<td>EXP-RELAZIONALE ::= EXP-ARITM
+					</td>
+				</tr>
+				<tr>
+					<td>EXP-RELAZIONALE ::= EXP-RELAZIONALE <i>&gt;</i> EXP-ARITM</td>
+				</tr>
+				<tr>
+					<td>EXP-RELAZIONALE ::= EXP-RELAZIONALE <i>&gt;=</i> EXP-ARITM</td>
+				</tr>
+				<tr>
+					<td>EXP-RELAZIONALE ::= EXP-RELAZIONALE <i>&lt;</i> EXP-ARITM</td>
+				</tr>
+				<tr>
+					<td>EXP-RELAZIONALE ::= EXP-RELAZIONALE <i>&lt;=</i> EXP-ARITM</td>
+				</tr>
+				<tr>
+					<td>EXP-ARITM ::= TERM</td>
+				</tr>
+				<tr>
+					<td>EXP-ARITM ::= STRINGA</td>
+				</tr>
+				<tr>
+					<td>EXP-ARITM ::= EXP-ARITM <i>+</i> TERM
+					</td>
+				</tr>
+				<tr>
+					<td>EXP-ARITM ::= EXP-ARITM <i>+</i> STRINGA</td>
+				</tr>
+				<tr>
+					<td>EXP-ARITM ::= EXP-ARITM <i>-</i> TERM</td>
+				</tr>
+				<tr>
+					<td>TERM ::= FACTOR</td>
+				</tr>
+				<tr>
+					<td>TERM ::= TERM <i>*</i> FACTOR</td>
+				</tr>
+				<tr>
+					<td>TERM ::= TERM <i>/</i> FACTOR</td>
+				</tr>
+				<tr>
+					<td>TERM ::= TERM <i>%</i> FACTOR</td>
+				</tr>
+				<tr>
+					<td>FACTOR ::= EXP-POST</td>
+				</tr>
+				<tr>
+					<td>FACTOR ::= <i>+</i> EXP-POST</td>
+					<td>più unario</td>
+				</tr>
+				<tr>
+					<td>FACTOR ::= <i>-</i> EXP-POST</td>
+					<td>meno unario</td>
+				</tr>
+				<tr>
+					<td>FACTOR ::= <i>++</i> EXP-VAR-LEFT</td>
+					<td>Pre incremento unario</td>
+				</tr>
+				<tr>
+					<td>FACTOR ::= <i>--</i> EXP-VAR-LEFT</td>
+					<td>Pre decremento unario</td>
+				</tr>
+				<tr>
+					<td>FACTOR ::= <i>!</i> EXP-POST</td>
+					<td>negazione</td>
+				</tr>
+				<tr>
+					<td>FACTOR ::= <i>(</i> EXP <i>)</i></td>
+				</tr>
+				<tr>
+					<td>EXP-POST ::= NUM</td>
+					<td>numero</td>
+				</tr>
+				<tr>
+					<td>EXP-POST ::= BOOLEANO</td>
+					<td>boolean</td>
+				</tr>
+				<tr>
+					<td>EXP-POST ::= EXP-VAR-RIGHT</td>
+				</tr>
+				<tr>
+					<td>EXP-POST ::= EXP-VAR-LEFT <i>++</i>
+					</td>
+					<td>post incremento</td>
+				</tr>
+				<tr>
+					<td>EXP-POST ::= EXP-VAR-LEFT <i>--</i></td>
+					<td>post decremento</td>
+				</tr>
+				<tr>
+					<td>EXP-VAR-RIGHT ::= IDENT</td>
+					<td>identificatore</td>
+				</tr>
+				<tr>
+					<td>EXP-VAR-RIGHT ::= EXP-VAR-RIGHT <i>( </i>[LISTA-ARG-EXP]<i> )</i></td>
+					<td>
+						Chiamata di funzione</td>
+				</tr>
+				<tr>
+					<td>EXP-VAR-RIGHT ::= EXP-VAR-RIGHT <i>[ </i>EXP-COND<i> ]</i></td>
+					<td>
+						Accesso alle proprietà di un array o oggetto</td>
+				</tr>
+				<tr>
+					<td>EXP-VAR-RIGHT ::= EXP-VAR-RIGHT <i>. IDENT</i></td>
+					<td>Accesso alle proprietà di un oggetto</td>
+				</tr>
+				<tr>
+					<td>EXP-VAR-LEFT ::= IDENT</td>
+				</tr>
+				<tr>
+					<td>EXP-VAR-LEFT ::= EXP-VAR-LEFT <i>[ </i>EXP-COND<i> ]</i></td>
+				</tr>
+				<tr>
+					<td>EXP-VAR-LEFT ::= EXP-VAR-LEFT <i>. IDENT</i></td>
+				</tr>
+				<tr>
+					<td>EXP-VAR-LEFT ::= EXP-VAR-LEFT <i>( </i>[LISTA-ARG-EXP]<i> )</i></td>
+				</tr>
+				<tr>
+					<td>LISTA-ARG-EXP ::= EXP-ASSIGN <i>,</i> LISTA-ARG-EXP| EXP-ASSIGN</td>
+				</tr>
+				<tr>
+					<td>IDENT ::= CAR { CAR | CIFRA }</td>
+				</tr>
+				<tr>
+					<td>STRINGA ::= <i>"</i>STRINGA1<i>"</i> | <i>'</i>STRINGA2<i>'</i></td>
+				</tr>
+				<tr>
+					<td>STRINGA1 ::= (CAR | <i>'</i> ) {(CAR | <i>'</i>) }</td>
+				</tr>
+				<tr>
+					<td>STRINGA2 ::= (CAR | <i>"</i>) { (CAR | <i>"</i> )}</td>
+				</tr>
+				<tr>
+					<td>CAR ::= <i>a</i> | <i>b</i> | <i>c</i> | <i>d</i> | <i>e</i> | <i>f</i> | <i>g</i>
+						| <i>h</i> | <i>i</i> | <i>j</i> | <i>k</i> | <i>l</i> | <i>m</i> | <i>n</i> | <i>o</i>
+						| <i>p</i> | <i>q</i> | <i>r</i> | <i>s</i> | <i>t</i> | <i>u</i> | <i>v</i> | <i>w</i>
+						| <i>x</i> | <i>y</i> | <i>z</i> | <i>A</i> | <i>B</i> | <i>C</i> | <i>D</i> | <i>E</i>
+						| <i>F</i> | <i>G</i> | <i>H</i> | <i>I</i> | <i>J</i> | <i>K</i> | <i>L</i> | <i>M</i>
+						| <i>N</i> | <i>O</i> | <i>P</i> | <i>Q</i> | <i>R</i> | <i>S</i> | <i>T</i> | <i>U</i>
+						| <i>V</i> | <i>W</i> | <i>X</i> | <i>Y</i> | <i>Z</i> | <i>_ </i>| <i>$</i></td>
+				</tr>
+				<tr>
+					<td>NUM ::= <i>0</i> | CIFRA-NON-NULLA {CIFRA} [<i>.</i> CIFRA {CIFRA} ]</td>
+				</tr>
+				<tr>
+					<td>INT ::= <i>0</i> | CIFRA-NON-NULLA {CIFRA}</td>
+				</tr>
+				<tr>
+					<td>CIFRA ::= <i>0</i> | CIFRA-NON-NULLA</td>
+				</tr>
+				<tr>
+					<td>CIFRA-NON-NULLA ::= <i>1</i> | <i>2</i> | <i>3</i> | <i>4</i> | <i>5</i> | <i>6</i>
+						| <i>7</i> | <i>8</i> | <i>9</i>
+					</td>
+				</tr>
+				<tr>
+					<td height="27">BOOLEANO ::= <i>true</i> | <i>false</i></td>
+				</tr>
+			</tbody>
+		</table>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Documento senza titolo</title>
+<link href="css/main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h3 id="title" align="center">Oggetti</h3>
+	<hr>
+	<ol>
+	<li><a href="#prop">Oggetti e proprietà</a></li>
+	<li><a href="#costr">I costruttori</a></li>
+	<li><a href="#meto">I metodi</a></li>
+	<li><a href="#ass">Oggetti come array associativi</a></li>
+	</ol>	
+	<hr>
+	<h4 id="prop">Oggetti e proprietà</h4>
+	<p>
+	<ul>
+	<li>Gli oggetti sono tipi di dati composti: raggruppano più valori di dati in singole unità, consentendo di salvare e recuperare tali valori facendovi riferimento per nome.</li>
+	<br/>&nbsp;
+	<li><b>Creazione di oggetti</b>
+		<ul>
+		<li>Gli oggetti vengono creati tramite l'operatore <b>new</b>.<br/>
+		Tale operatore deve essere seguito dal nome di un costruttore di un oggetto che serve ad inizializzarlo.</li>
+		<br/><br/>&nbsp;
+		Esempio, creazione oggetto vuoto:
+		<br/><br/>
+		var o = new Object( );
+		</ul>
+	</li>
+	<br/>
+	<li><b>Letterale oggetto</b>
+		<ul>
+		<li>Un letterale oggetto consente di incorporare la descrizione letterale di un oggetto nel codice Javascript.</li>
+		<br/>&nbsp;
+		<li>un letterale oggetto consiste in un elenco separato da virgole di specificazioni di proprietà racchiuse tra parentesi graffe. 
+		Ciascuna specificazione di proprietà in un letterale oggetto comprende il nome della proprietà seguita dal segno di ':' e dal valore della proprietà stessa.
+		</li><br/><br/>&nbsp;
+		Esempio: var cerchio = {x:0, y:0, radius:2}
+		</ul>
+	</li>
+	<br/>&nbsp;
+	<li>per accerdere alle proprietà di un oggetto si usa la notazione puntata '.' .</li>
+	<br/>&nbsp;
+	<li>E' possibile creare una nuova proprietà per un oggetto semplicemente assegnando un valore alla proprietà stessa. In seguito tale valore può essere modificato.</li>
+	</ul>
+	</p>
+	<a href="#title"><img src="IMG/freccia_su.gif" border="0"></a>
+	<hr>
+	<h4 id="costr">I Costruttori</h4>
+	<p>
+	<ul>
+	<li>Un costruttore è una funzione di Javascript con 2 caratteristiche:
+		<ul>
+		<li>Viene richiamato mediante l'operatore <i>new</i>;</li>
+		<li>Gli viene passato un riferimento a un oggetto vuoto appena creato come valore della parola chiave speciale <b>this</b>, ed è responsabile della corretta inizializzazione di tale nuovo oggetto.</li>
+		</ul>
+		Esempio: definizione del costruttore<br/>
+		<br/>&nbsp;
+		function Rectangle(w, h)<br/>
+		{<br/>
+		&nbsp;this.width = w; <br/>
+		&nbsp;this.height = h; <br/>
+		}<br/><br/>
+		var rect = new Rectangle (2,4); <br/>
+		</li>
+	</ul>
+	</p>
+	<a href="#title"><img src="IMG/freccia_su.gif" border="0"></a>
+	<hr>
+	<h4 id="meto">I Metodi</h4>
+	<p>
+	<ul>
+	<li>Un <i>metodo</i> è una funzione javascript che viene richiamata mediante un oggetto.</li>
+	<br/>&nbsp;
+	<li>Dato che è possibile assegnare funzioni a variabili, si può assegnare una funzione ad una proprietà di un oggetto:<br/>
+	sia <i>f</i>, una funzione e <i>o</i> un oggetto è possibile definire un metodo di nome <i>m</i> con la riga seguente: <br/>
+	&nbsp;<b>o.m = f;</b><br/>
+	per richiamarlo: o.m( );</li>
+	<br/>&nbsp;
+	<li>l'oggetto tramite il quale viene richiamato un metodo diviene il valore della parola chiave <b>this</b> all'interno del corpo del metodo, quindi all'interno del metodo per fare riferimento all'oggetto si usa la parola chiave <i>this</i>.</li>
+	<br/>&nbsp;
+	</ul>
+	</p>
+	<a href="#title"><img src="IMG/freccia_su.gif" border="0"></a>
+	<hr>
+	<h4 id="ass">Oggetti come array associativi</h4>
+	<p>
+	<ul>
+	<li>per accedere alle proprietà di un oggetto si usa ".", ma si possono usare anche le [ ], le due espressioni sono equivalenti:
+	<p><i>oggetto.proprietà<br/>
+	<br/>
+	oggetto["proprietà"]
+	</i></p></li>
+	<br/>
+	<li>la differenza tra le due sintassi è che nella prima il nome di proprietà è un identificativo, mentre nella seconda è una stringa.</li>
+	<br/>&nbsp;
+	<li>In javascript, un programma è in grado di creare qualsiasi numero di proprietà in qualsiasi oggetto, il nome delle proprietà viene espresso come identificativo.</li>
+	<br/>&nbsp;
+	<li>Gli identificativi devono essere immessi letteralmente nel programma javascript. Poichè non sono tipi di dati, non possono essere manipolati dal programma stesso.</li>
+	<br/>&nbsp;
+	<li>Se si accede alle proprietà di un oggetto come alle componenti di un array, i nomi delle proprietà dell'oggetto devono essere espresse tramite stringhe e possono quindi essere manipolate.</li>
+	</ul>
+	</p>
+	<a href="#title"><img src="IMG/freccia_su.gif" border="0"></a>
+	<hr>
+	<table align="center">
+	 <tr> 
+    	<td><a href="funzioni.htm"><img src="img/freccia_sx.gif" width="30" height="30" border="0"></a></td>
+    	<td><a href="intros.htm"><img src="IMG/HOME.GIF" border="0"></a></td>
+    	<td><a href="array.htm"><img src="img/freccia_dx.gif" width="30" height="30" border="0"></a></td>
+  	</tr>
+	</table>
+</body>
+</html>

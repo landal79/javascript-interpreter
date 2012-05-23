@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Grammatica del Lessico</title>
+<link href="css/gram.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<p><img src="img/lessico.jpg" width="500" height="60"></p>
+<hr>
+<table>
+	<tr>	
+    <td>TOKEN ::= LETTERALE | SIMBOLI</td>
+	</tr>
+	<tr>	
+    <td>LETTERALE ::= STRINGA | PAROLA | NUM</td>
+	</tr>
+	<tr>
+		
+    <td>PAROLA ::= KEYWORD | BOOLEANO | IDENT</td>
+	</tr>
+  	<tr> 
+    <td>IDENT ::= CAR { CAR | CIFRA }</td>
+  </tr>
+  <tr>
+  	<td>KEYWORD ::= <i>break</i> | <i>case</i> | <i>continue</i> 
+      | <i>default</i> | <i>delete</i> | <i>do</i> | <i>else</i> | <i>for</i> 
+      | <i>function</i> | <i>if</i> | <i>new</i> 
+      | <i>null</i> | <i>return</i> | <i>switch</i> | <i>this</i> | <i>typeof</i> 
+      | <i>var</i> | <i>while</i></td>
+  </tr>
+  <tr>
+  	<td>STRINGA ::= <i>"</i>STRINGA1<i>"</i> | <i>'</i>STRINGA2<i>'</i></td>
+  </tr>
+  <tr>
+  	<td>STRINGA1 ::= (CAR | <i>'</i> ) {(CAR | <i>'</i>) }</td>
+  </tr>
+  <tr>
+  	<td>STRINGA2 ::= (CAR | <i>"</i>) { (CAR | <i>"</i> )}</td>
+  </tr>
+  <tr>
+  	<td>CAR ::= <i>a</i> | <i>b</i> | <i>c</i> | <i>d</i> | <i>e</i> | <i>f</i> | <i>g</i> | <i>h</i> | <i>i</i> | <i>j</i> | <i>k</i> | <i>l</i> | <i>m</i> | <i>n</i> 
+      | <i>o</i> | <i>p</i> | <i>q</i> | <i>r</i> | <i>s</i> | <i>t</i> | <i>u</i> | <i>v</i> | <i>w</i> | <i>x</i> | <i>y</i> | <i>z</i> | 
+      <i>A</i> | <i>B</i> | <i>C</i> | <i>D</i> | <i>E</i> | <i>F</i> | <i>G</i> | <i>H</i> | <i>I</i> | <i>J</i> | <i>K</i> | <i>L</i> | <i>M</i> | <i>N</i> | <i>O</i> | <i>P</i> | <i>Q</i> | <i>R</i> | 
+      <i>S</i> | <i>T</i> | <i>U</i> | <i>V</i> | <i>W</i> | <i>X</i> | <i>Y</i> | <i>Z</i> | <i>_ </i>| <i>$</i></td>
+  </tr>
+  <tr>
+  	<td>SIMBOLI ::= <I>+</I> | <I>-</I> | <I>*</I> | <I>/</I> | <I>%</I> | <I>&lt;</I> 
+      | <I>&gt;</I> | <i>&lt;=</i> | <i>&gt;=</i> | <i>(</i> | <i>)</i> | <i>[</i> 
+      | <i>]</i> | <i>!</i> | <i>?</i> | <i>:</i> | <i>=</i> |<i>= =</i> | <i>! =</i> | <i>.</i> | <i>++</i> | <i>--</i> | <i>{</i> | <i>}</i> | <i>;</i> | <i>,</i></td>
+  </tr>
+  <tr>
+  	<td>NUM ::= <i>0</i> | CIFRA-NON-NULLA {CIFRA} [<i>.</i> CIFRA {CIFRA} ]</td>
+  </tr>
+  <TR>
+  	<TD>CIFRA ::= <i>0</i> | CIFRA-NON-NULLA</TD>
+  </TR>
+  <TR>
+  <TD>CIFRA-NON-NULLA ::= <i>1</i> | <i>2</i> | <i>3</i> | <i>4</i> | <i>5</i> | <i>6</i> | <i>7</i> | <i>8</i> | <i>9</i> </TD>
+  </TR>
+  <tr>
+  	<td>BOOLEANO ::= <i>true</i> | <i>false</i></td>
+  </tr>  
+</table>
+</body>
+</html>

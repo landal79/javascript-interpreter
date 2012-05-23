@@ -1,0 +1,44 @@
+Test sui tipi di dati
+var x=3; 
+var z = "Stringa"; 
+num = 54.78768; 
+var array = [5,'coap', 90.90, false];
+array[0] = {a:54, b:56, c: 54};
+var y = array[3]; 
+var obj = { a: 45, b: 'stringa', c:[55,66,77]};
+f = obj.c[0];
+obj.a = 'saluti'; 
+b = [1,false,"tre", {x:10, y:87}]; 
+x = true; y = false; 
+
+  
+Test su espressioni
+var x = 3+2*5-1; 
+var i = 5554.6756-456; 
+var z = (0 && true )|| ( 43 && true); 
+var y = "a" + "b" < "Ab"; 
+var m ="2" + 1 + 3; 
+var v = 678; p = v++ * 67; 
+var v = 678; p = ++v * 67; 
+
+  
+Strutture di controllo
+var x = 10, y = 56; if (x > y) x = x-y; else x = y -x; 
+var x = 10; switch (x) { case 1: case 2: case 10: x = 43; break; default: var t ="non trovato";} 
+sum = 1; i = 0; while (i < 11) { i++; sum = sum * i;} 
+sum = 1; i = 0; do { i++; sum = sum * i;}while (i < 11); 
+sum = 0; for(i=0; i<11; i++ ) sum = sum +i; 
+var obj = {a:56, b:56, c:56};var result = "";
+for (var property in obj) result = result + property + "=" + obj[property] + " ; "; 
+
+  
+Funzioni
+function fun1(x,y){ if (x > y) return x-y; else return x+y;} res = fun1(43,65); 
+function fa(x,y,z){ function fun1(){ return x+y;} function fun2(){ return x-y;} if (z == 1) return fun1(); else return fun2();} res = fa(34,454,0); 
+function fa(a,b,c){ if (c == 1) return fun1(a,b); else return fun2(b,a);} function fun1(x,y){ return x+y;} function fun2(x,y){ return x-y;} res = fa(34,454,0); 
+g = function ( x, y ){ return x+y;} g(3,2); 
+
+  
+Oggetti
+funtion Punto(a,b) { this.x = a; this.y = b;} pun = new Punto(34,56); 
+dalla precedente: punto.z = 65; //posso aggiungere una proprietà in più 

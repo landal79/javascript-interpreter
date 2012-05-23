@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Documento senza titolo</title>
+<link href="css/main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<img src="img/progetto.jpg" width="300" height="60">
+<hr>
+<h3>Gerarchia di Token</h3>
+<ul>
+	<li>I Token rappresentano le categorie lessicali che possono comparire in una frase del linguaggio,
+	 quindi dovrà esistere una classe per ogni categoria; le classi di token che devono esistere si possono desumere dalla grammatica del lessico, nella quale ci sono le varie categoria lessicali.</li>
+	 <li>E' stata costruita a partire dal tipo <em>IToken</em>, una gerarchia di tipi di token; questo &egrave; stato realizzato attraverso l'utilizzo delle interfacce java. </li>
+	 <li>Per quanto riguarda la rappresentazione dei token si è scelta di rappresentarli attraverso le stringhe,
+	 questo per uniformità di rappresentazione per diverse applicazioni che potrebbero farne uso; quindi per ottenere
+	  la rappresentazione esterna del token tutte le classi reali implementano il metodo <em>toString()</em>, definito
+	  nell'interfaccia <i>IToken</i>, poi le varie applicazioni in base al significato semantico che ha la particolare
+	  classe del token possono estrarre la rappresentazione che gli serve.</li>
+	  <li>L'interfaccia IToken definisce anche un'altro metodo<em> getID()</em>, il quale restituisce un identificativo (in forma di stringa) che indica la categoria lessicale del token, questo sar&agrave; usato dal parser che cos&igrave; sar&agrave; totalmente indipendenta dalla particolare gerarchia di token.</li>
+	  <li>per i LetteraliToken che rappresentano la categorie lessicale dei Letterali &egrave; stato inserito il metodo <em>getVal ( )</em> che restiuisce un Object, questo metodo restituisce il particolare valore contenuto nel token, esso verr&agrave; specializzato dalle sottoclassi imponendo post-condizioni pi&ugrave; stringenti per restiuire il particolare valore che rappresentano. </li>
+	  <li>Parallelamente alla gerarchia di tipi di token &egrave; stata creata una gerarchia di classi concrete che implementano i vari tipi di token.</li>
+	  <li>Viene mostrata ora la gerarchia di classi di Token, le interfacce sono analoghe con l'unica differenza che il nome ha una 'I' davanti al nome e non forniscono alcuna implementazione; Gerarchia di token::</li>
+	  <p align="center"><img src="img/tokendiag.JPG" width="461" height="481"></p>
+	  <li>Gerarchia delle KeywordToken:</li>
+	  <p align="center"><img src="img/keywordTokenDiag.JPG" width="466" height="366"></p>
+	  <li>Gerarchia dei Simboli:</li>
+	  <p align="center"><img src="img/SimoliTokenDiag.JPG" width="474" height="702"></p>
+	  <li>Per facilitare la creazione dei token e rendere indipendenti i componenti che useranno tale gerarchia, è stata progettata una classe con l'uso del 
+	  pattern Factory Method che consente di creare oggetti token senza conoscere esattamente quali oggetti verranno effettivamente creati, per fare questo sono
+	  stati eseguiti i seguenti passi:<br/>
+&nbsp;&nbsp;<br/>
+  &nbsp;
+	    <ul>
+	      <li>è stata creato un tipo<em> ITokenFactory</em>, il quale ha un metodo che consente di creare ogni tipo appartenente alla gerarchia dei tipi di token. </li>
+	      <li>ITokenFactory &egrave; stata implementata dalla classe TokenFactory che &egrave; la classe che effettivamente crea le istanze degli oggetti token.</li>	      
+	    </ul>		  
+	  </li>	 
+	  <p align="center"><img src="img/factoryToken.JPG"></p>
+</ul>
+<hr>
+<table align="center">
+	 <tr> 
+    	<td><a href="progetto.htm"><img src="img/freccia_sx.gif" border="0"></a></td>
+    	<td><a href="introduzione.htm" onClick="parent.leftFrame.location='sommario.htm';"><img src="img/home.gif" border="0"></a></td>
+    	<td><a href="lexer.htm" ><img src="img/freccia_dx.gif" border="0"></a></td>
+  	</tr>
+</table>	
+</body>
+</html>
+

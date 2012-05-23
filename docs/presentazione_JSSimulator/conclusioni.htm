@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Documento senza titolo</title>
+<link href="css/main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<img src="img/conclusioni.jpg" width="350" height="60">
+<hr>
+<h3>Pregi e difetti</h3>
+<ul>
+<li>La complessità del sistema non è stata del tutto trascurabile, ma un approccio basato sulle tecniche dell'ingegneria del software,
+ha fornito un notevole supporto per approcciare il problema in modo efficace, individuando immediatamente le componenti fondamentali sin dai primi
+istanti di progettazione.</li>
+<br/>&nbsp;
+<li>Il diagramma del modello dell'analisi mostra chiaramente quali sono le parti fondamentali del sistema: una interfaccia grafica, un controller, un lexer, un parser, un visitor, infine le due 
+strutture dati di token e di oggetti componenti l'APT.  Nello sviluppo del progetto si è cercato il più possibile di raggiungere il requisito di minimo accoppiamento fra i componenti e un elevato grado di accoppiamento interno.</li>
+<br/>&nbsp;
+<li>il minimo grado di accoppiamento &egrave; stato raggiunto con successo attraverso l'applicazione di design pattern:
+<br/>&nbsp;
+<ul>
+<li>Per rendere indipendente il lexer dalla specifica gerarchia di token è stato sfruttato il pattern <i>AbstractFactory</i>, è stato creato un oggetto factory che crea gli specifici token.</li><br/>&nbsp;
+<li>Attraverso una accurata progettazione dell'interfaccia dei token è stato possibile rendere indipendente anche il parser dal 
+particolare token, infatti esso sfrutta il metodo <i>getID()</i>, che restituisce un identificativo in formato stringa del particolare token.</li><br/>&nbsp;
+<li>Nella progettazione dell'interfaccia grafica l'indipenza dei componenti è un requisito fondamentale, in quanto potrebbere essere usate
+in applicazioni completamente diverse; l'interfaccia grafica è completamente modulare il dispositivo di input, quello di output e il pannello dei 
+pulsanti (al quale possono essere aggiunti quanti bottoni si vuole) sono definiti da specifiche interfacce, interfacce che la classe base <i>IODevice</i> sfrutta per gestirle. Quindi i vari componenti dell'interfaccia sono
+completamente intercambiabili.</li><br/>&nbsp;
+<li>Nella progettazione dei pulsanti è stato sfruttato il <i>pattern Command</i>, infatti i pulsanti non hanno nessuna conoscenza dell'operazione
+che verrà eseguita alla loro pressione, ma le classi che realmente eseguono l'operazione dovranno implementare l'interfaccia <i>ICommand</i>.</li><br/>&nbsp;
+</ul>
+<br/>&nbsp;
+<li>Non si è riusciti a raggiungere l'indipendenza del parser dalla gerarchia di apt, magari attraverso l'introduzione di una oppurtuna gerarchia 
+di tipi e quindi con sfruttando il pattern abstract factory si potrebbe ottenere un basso livello di accoppiamento.
+<br/>&nbsp;
+</li>
+<li>I costruttori delle interfacce grafiche sfruttano il pattern <i>Template method</i>, infatti richiamano un metodo <i>configura()</i>, che le sottoclassi possono specializzare per ottenere una configurazione differente.</li>  
+<br/>&nbsp;
+<li>Nella progettazione delle classi si è cercato di seguire il principio del <i>design for change</i>, infatti sia lexer, sia parser si prestano ad essere specializzati dalle sottoclassi, in quanto i metodi che eseguono realmente l'operazioni non sono pubblici, 
+le sottoclassi possono agilemente ridefinirli per modificare il comportamento della classe padre.</li>
+<br/>&nbsp;
+  <li>Attraverso la definizione di tipi per specificare particolari operazioni è stato possibile eseguire l'analisi LL(K): è stata definita una interfaccia <i>LLAnalisys</i>, che viene implementata da <i>LexerLL</i>,
+    il quale implementa il tipo <i>ILexer</i>; è stato sfruttato il pattern Decorator, infatti il LexerLL incpsula il lexer reale e permette al parser di continuare a leggere
+  i token come se li prelevasse dal lexer reale, in più <i>LexerLL</i> fornisce i metodi che il parser sfrutterà nell'analisi LL.</li>
+<br/>&nbsp;
+  <li>Il package utility fornisce un insieme fi funzionalità molto flessibile, infatti specializzando oppurtamente la classe <i>List</i> e attraverso la definizione
+    di diversi tipi di strutture dati dinamiche è stato semplice ottenere liste non ordinate, fifo, liste con funzionalità di fifo, strutture fifo.<br/>
+  </li>
+
+<br/>&nbsp;
+  <li>La complessità del componente visitor che si occupa dell'interpretazione non ha posto diversi problemi in fase di progettazione, tali problemi hanno portato
+    ha una scarsa flessibilità del compontente e ad un elevato accoppiamento del componente internamene e con il componente dell'apt. 
+  Il risultato è componente non di elevata qualità tecnica, alcuni miglioramenti sarebbero possibli.  </li>
+</ul>
+<br/>&nbsp;
+  <li>Il compito principale dell'interprete è la manipolazione dei dati, quindi attraverso una migliore progettazione della gerarchia di dati, magari sfruttando il
+      pattern compisite, e con la definizione di tipi che specificano operazioni sui dati, come ad esempio la definizione di un tipo <i>Comparable</i> che definisce le
+  operazioni di confronto fra i possibili dati, sarebbe possibile dimunuire la complessità dell'interprete, disponendo non di un unica classe con tante funzionalità, ma di molte con più funzionalità specifiche, quindi più riusabili.</li>
+<br/>&nbsp;
+  <li>La grammatica su cui si basa l'intero sistema, non è la migliore che si possa ottenere, infatti il parser risulta abbastanza complesso; inoltre
+    in alcuni punti come per esempio i cicli for, la grammatica dimostra una certa carenza espressiva, per questo motivo non 
+è possibile distinguere immediatamente fra cicli for e for/in, questo porta a non poter scrivere cicli for senza i tre campi
+  che lo contraddistinguono, infatti non verrebbe riconosciuto. Altro punto dolente della grammatica riguarda il riconoscimento degli
+  oggetti, infatti è non si è riusciti a scrivere una grammatica che permettese una facile identificazione dei costruttori degli
+  oggetti, questa carenza si ripercossa su tutto il progetto, quindi la gestione degli oggetti andrebbe migliorata.</li>
+  <br/>&nbsp;
+</ul>
+<h3>Altri possibili sviluppi futuri:</h3>
+<ul>
+<li>Si possono intraprendere le già citate migliorie ai componenti esistenti.</li>
+<br/>
+<li>Sarebbe possibile aumentare aumentare il numero delle funzionalità fornite dal sistema, progettando nuovi
+visitor, per esempio un visitor che produce una rappresentazione sotto forma di albero della frase.</li>
+<br/>&nbsp;
+<li>Ampliare l'insieme degli operatori supportati, estendere le funzionalità dell'interprete ad altre particolarità del linguaggio
+javascript non implementate in questa versione;</li>
+<br/>&nbsp;
+<li>Per quanto riguarda l'applicazione stand-alone, rendere possibile l'accesso al file-system in modo che i programmi da eseguire possano essere caricati direttamente da file.</li>
+
+</ul>
+<hr>
+<table align="center">
+	 <tr>
+	 	<td><a href="test.htm"><img src="img/freccia_sx.gif" border="0"></a></td> 
+    	<td><a href="introduzione.html"><img src="img/home.gif" border="0"></a></td>
+		<td><img src="img/spazio.gif"></td>
+  	</tr>
+</table>	
+</body>
+</html>

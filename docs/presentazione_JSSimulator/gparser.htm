@@ -1,0 +1,197 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Grammatica del Parser</title>
+<link href="css/gram.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<img src="img/gparser.jpg" width="500" height="60">
+<hr>
+<table width="100%">
+			<tbody>
+				<tr>
+					<td>ISTR ::=
+					</td>
+					<td>ISTR-LABEL | ISTR-COMPOSTA | ISTR-SELEZIONE | ISTR-ITERAZIONE | ISTR-SALTO | 
+						ISTR-DEFINIZIONE | ISTR-EXP | ISTR-VUOTA
+					</td>
+				</tr>
+				<tr>
+					<td>ISTR-LABEL ::=</td>
+					<td><i>case</i> EXP-COND <i>:</i> ISTR | <i>default :</i> ISTR</td>
+				</tr>
+				<tr>
+					<td>ISTR-EXP ::=</td>
+					<td>EXP <i>;</i></td>
+				</tr>
+				<tr>
+					<td>ISTR-VUOTA ::=</td>
+					<td><i>;</i></td>
+				</tr>
+				<tr>
+					<td>ISTR-COMPOSTA ::=</td>
+					<td><i>{</i> LISTA-ISTR <i>}</i></td>
+				</tr>
+				<tr>
+					<td>LISTA-ISTR ::=</td>
+					<td>ISTR { ISTR }</td>
+				</tr>
+				<tr>
+					<td>ISTR-SELEZIONE ::=</td>
+					<td><i>if (</i> EXP <i>)</i> ISTR [ <i>else</i> ISTR ] | <i>switch (</i> EXP <i>) </i>
+						ISTR</td>
+				</tr>
+				<tr>
+					<td>ISTR-ITERAZIONE ::=</td>
+					<td><i>while (</i> EXP <i>)</i> ISTR | <i>do</i> ISTR <i>while (</i> EXP <i>) ;</i></td>
+				</tr>
+				<tr>
+				</tr>
+				<tr>
+					<td>ISTR-ITERAZIONE ::=</td>
+					<td><i>for (</i> ( [EXP] <i>;</i> [EXP] <i>;</i> [EXP] | DEF-VAR-IN <i>in </I>EXP-VAR-RIGHT ) <i>)</i>
+						ISTR</td>
+				</tr>
+				<tr>
+					<td>ISTR-SALTO ::=</td>
+					<td><i>continue;</i> | <i>break;</i> | <i>return</i> [EXP] <i>;</i></td>
+				</tr>
+				<tr>
+					<td>ISTR-DEFINIZIONE ::=</td>
+					<td>DEF-VAR | DEF-FUN</td>
+				</tr>
+				<tr>
+					<td>DEF-VAR ::=</td>
+					<td><i>var </i>LISTA-DEF <i>;</i></td>
+				</tr>
+				<tr>
+					<td>DEF-VAR-IN ::=</td>
+					<td><i>var </i>LISTA-DEF </td>
+				</tr>
+				<tr>
+					<td>LISTA-DEF ::=</td>
+					<td>IDENT [<i> =</i> EXP ] ( <i>,</i> LISTA-DEF | &epsilon; )</td>
+				</tr>
+				<tr>
+					<td>DEF ::=</td>
+					<td><i>function IDENT ( </i>[LISTA-PARAM] <i>) {</i> LISTA-ISTR | ISTR-COSTR<i> }</i></td>
+				</tr>
+				<tr>
+					<td>ISTR-COSTR ::=</td>
+					<td>THIS ( ISTR-COSTR | &epsilon; )</td>
+				</tr>
+				<tr>
+					<td>THIS ::=</td>
+					<td><i>this . IDENT =</i> EXP-ASSIGN <i>;</i></td>
+				</tr>
+				<tr>
+					<td>LISTA-PARAM ::=</td>
+					<td>
+						<i>IDENT </i>( <i>,</i> LISTA-PARAMETRI | &epsilon; )</td>
+				</tr>
+				<tr>
+					<td>EXP ::=</td>
+					<td>EXP-ASSIGN { <i>,</i> EXP-ASSIGN }</td>
+				</tr>
+				<tr>
+					<td>EXP-ASSIGN ::=</td>
+					<td>EXP-COND | EXP-NEW | OGGETTO | ARRAY | FUNZ | <i>null</i> | EXP-VAR-LEFT <i>=</i>
+						EXP-ASSIGN</td>
+				</tr>
+				<tr>
+					<td>EXP-NEW ::=</td>
+					<td><i>new IDENT (</i> [LISTA-ARG-EXP] <i>)</i></td>
+				</tr>
+				<tr>
+					<td>OGGETTO ::=</td>
+					<td><i>{</i> LISTA-PROP <i>}</i></td>
+				</tr>
+				<tr>
+					<td>LISTA-PROP ::=</td>
+					<td><i>IDENT :</i> ELEMENTO ( <i>, </i>LISTA-PROP | &epsilon; )</td>
+				</tr>
+				<tr>
+					<td>ARRAY ::=</td>
+					<td><i>[</i> LISTA-EL <i>]</i></td>
+				</tr>
+				<tr>
+					<td>LISTA-EL ::=</td>
+					<td>ELEMENTO ( <i>, </i>LISTA-EL | &epsilon; )</td>
+				</tr>
+				<tr>
+					<td>ELEMENTO ::=
+					</td>
+					<td><i>NUM</i> | <i>STRINGA</i> | OGGETTO | <i>BOOLEANO</i> | ARRAY | EXP-ASSIGN</td>
+				</tr>
+				<tr>
+					<td>FUNZ ::=</td>
+					<td><i>function ( </i>[LISTA-PARAM] <i>) {</i> LISTA-ISTR <i>}</i></td>
+				</tr>
+				<tr>
+					<td>EXP-COND ::=</td>
+					<td>
+						EXP-OR-LOGICO [ <i>?</i> EXP <i>:</i> EXP ]</td>
+				</tr>
+				<tr>
+					<td>EXP-OR-LOGICO ::=</td>
+					<td>
+						EXP-AND-LOGICO { <i>||</i> EXP-AND-LOGICO }</td>
+				</tr>
+				<tr>
+					<td>EXP-AND-LOGICO ::=</td>
+					<td>
+						EXP-UGUAGLIANZA { <i>&amp;&amp; </i>EXP-UGUAGLIANZA }</td>
+				</tr>
+				<tr>
+					<td>EXP-UGUAGLIANZA ::=</td>
+					<td>
+						EXP-RELAZIONALE { ( <i>==</i> | <i>!=</i> ) EXP-RELAZIONALE }</td>
+				</tr>
+				<tr>
+					<td>EXP-RELAZIONALE ::=</td>
+					<td>
+						EXP-ARITM { ( <i>&gt;</i> | <i>&gt;=</i> | <i>&lt;</i> | <i>&lt;=</i> ) 
+						EXP-ARITM } </i>
+					</td>
+				</tr>
+				<tr>
+					<td>EXP-ARITM ::=</td>
+					<td> TERM  { ( ( <i>+</i> | <i>-</i> ) TERM ) } | ( TERM | STRING ) { <i>+</i> STRINGA }</td>
+				</tr>
+				<tr>
+					<td>TERM ::=</td>
+					<td>FACTOR { ( <i>*</i> | <i>/</i> | <i>%</i> ) FACTOR }</td>
+				</tr>
+				<tr>
+					<td>FACTOR ::=</td>
+					<td>[ <i>+</i> | <i>-</i> | <i>!</i> ] EXP-POST | {<i>++</i> | <i>--</i>} EXP-VAR-LEFT | <i>(</i>EXP
+						<i>)</i></td>
+				</tr>
+				<tr>
+					<td>EXP-POST ::=</td>
+					
+      <td>EXP-VAR-RIGHT | EXP-VAR-LEFT (<i>++</i> | <i>--</i> )| <i>NUM</i> | 
+        <i>BOOLEANO</i> </td>
+				</tr>
+				<tr>
+					<td>EXP-VAR-RIGHT::=</td>
+					<td><i>IDENT</i> {<i>[ </i>EXP-COND<i> ]</i> | <i>.IDENT</i> | <i>(</i> [LISTA-ARG-EXP]
+						<i>)</i>}</td>
+				</tr>
+				<tr>
+					<td>EXP-VAR-LEFT ::=</td>
+					<td><i>IDENT</i> {<i>[ </i>EXP-COND<i> ]</i> | <i>. IDENT</i> | <i>(</i> [LISTA-ARG-EXP]
+						<i>)</i>}</td>
+				</tr>
+				<tr>
+					<td>LISTA-ARG-EXP::=</td>
+					<td>
+						EXP-ASSIGN ( <i>,</i> LISTA-ARG-EXP| &epsilon; )</td>
+				</tr>
+			</tbody>
+		</table>
+</body>
+</html>

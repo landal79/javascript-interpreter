@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Documento senza titolo</title>
+<link href="css/main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<img src="img/progetto.jpg" width="300" height="60">
+<hr>
+<h3>Gerarchia APT</h3>
+<ul>
+	<li>La gerarchia APT contiene le possibili categorie sintattiche di cui è composta una frase di javascript;
+	le categorie sintattiche possono essere desunte dalla grammatica generale, togliendo tutte le informazioni accessorie,
+	si ottiene così la grammatica dell'apt (vedi <a href="grammatiche.htm#apt">grammatiche</a>), nella quale sono 
+	presenti le varie categorie sintattiche del linguaggio. Ogni categoria sintattica corrisponde ad una classe
+	concreta della gerarchia, ogni classe è caratterizzata dal fatto di avere diversi campi, uno per ogni sottotipo (si intende categoria sintattica)
+	che compone la regola sintattica.</li>
+    <li>Con questa gerarchia si costruisce l'albero di derivazione delle frasi del linguaggio, esso costiuisce la rappresentazione interna della frase usata usata dai visitor per compiere le possibili valutazioni di una frase; sar&agrave; il parser a creare l'albero di derivazione come risultato dell'analisi sintattica.</li>
+    <li>Categoria sintattica fondamentale &egrave; l'istruzione dalla quale derivano tutte le altre in quanto sono particolari istruzioni.</li>
+    <li>Gerarchia APT:</li>
+</ul>
+<p align="center"><img src="img/AptDiag.JPG" width="473" height="663"></p>
+<li>Nei prossimi diagrammi si sono tralasciati i dettagli delle classi, in quanto il programmatore conosce la teoria sul riconoscimento dei linguaggi e sa a partire dall'insieme delle classi e alla documentazione fornitagli dettagliare le caratteristiche delle classi per fare in modo che vengano usate dai visitor.</li>
+<p align="center"><img src="img/AptDiag2.JPG" width="470" height="503"></p>
+<li>Nel prossimo diagramma mostro un particolare della implementazione dell'apt, si vede come siano presenti riferimenti fra
+ i vari elementi dell'albero, come viene indicato dalla grammatica dell'apt, e come siano presenti delle liste, come nel caso dei 
+  parametri di una funzione oppure della lista delle istruzioni. Per le liste si è costruito un elemento che contiene un dato e un riferimento a un altra lista.</li>
+  <p align="center"><img src="img/AptDiag3.JPG" width="446" height="705"></p>
+  <li>Gerarchia Apt dalle categorie sintattiche del tipo espressioni (il diagramma è stato suddiviso in più parti per non renderlo troppo pesante):</li>
+  <p align="center"><img src="img/AptDiag4.JPG" width="441" height="430"></p>
+  <p align="center"><img src="img/AptDiag5.JPG" width="444" height="493"></p>
+  <li>Gerarchia delle operazioni aritmetiche:</li>
+  <p align="center"><img src="img/AptDiag6.JPG" width="477" height="596"></p>
+  <hr>
+<table align="center">
+	 <tr> 
+    	<td><a href="lexer.htm"><img src="img/freccia_sx.gif" border="0"></a></td>
+    	<td><a href="introduzione.htm" onClick="parent.leftFrame.location='sommario.htm';"><img src="img/home.gif" border="0"></a></td>
+    	<td><a href="parser.htm" ><img src="img/freccia_dx.gif" border="0"></a></td>
+  	</tr>
+</table>	
+</body>
+</html>
+ 

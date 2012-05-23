@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Documento senza titolo</title>
+<link href="css/main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h3 id="title" align="center">Istruzioni</h3>
+	<hr>
+	<ol>
+	<li><a href="#exp">Definizione di istruzione</a></li>
+	<li><a href="#contr">Strutture di controllo</a></li>
+	<li><a href="#dic">Dichiarazioni di variabili e funzioni</a></li>
+	</ol>
+	<hr>
+	<h4 id="exp">Definizione di istruzione</h4>
+	<p>
+	<ul>
+  	<li>Le istruzioni in javascript rappresentano qualcosa di simile a una frase 
+    completa o a un comando, esse possono contenere espressioni oppure le espressioni 
+    possono essere utilizzate all'interno delle strutture di controllo.</li>
+	<br/>&nbsp;
+  	<li>Le espressioni devono essere separate una dall'altra da un punto e virgola (;) oppure da un fine riga.</li>
+  	<br/>&nbsp;
+  	<li>Il tipo più semplice di istruzione di javascript è rappresentato dalle espressioni 
+    che producono degli effetti.</li>
+  	<br/>&nbsp; 
+	<li>Le istruzioni di assegnamento rappresentano la principale categoria all'interno 
+    delle espressioni.</li>
+	<br/>&nbsp;
+	<li>Si può definire anche un blocco di istruzioni usando le parentesi graffe { }, all'interno si mettono le istruzioni.</li>
+	</ul>
+	</p>
+	<a href="#title"><img src="IMG/freccia_su.gif" border="0"></a>
+	<hr>
+	<h4 id="contr">Strutture di controllo</h4>
+	<p>
+	
+<ul>
+    <li><b>if</b><br/><br/>
+	<i>if (espressione) <br/>
+		&nbsp;&nbsp;&nbsp;istruzione</i><br/>
+	<br/>
+	In questa forma viene valutata <i>l'espressione</i>: se il valore risultante è vero (true) viene eseguita l'istruzione specificata, mentre se l'espressione è falsa (false), l'struzione non viene eseguita<br/>
+	<br/>
+		<i>if (espressione) <br/>
+		&nbsp;&nbsp;&nbsp;istruzione1<br/>
+		else<br/>
+		&nbsp;&nbsp;&nbsp;istruzione2</i><br/>
+	<br/>
+	Se l'espressione è vera viene eseguita l'istruzione1 altrimenti l'istruzione2<br/>
+	</li>
+	<br/>
+	<li><b>switch</b><br/>
+		sintassi:<br/><br/>
+		<I>switch (espressione) {<br/>
+		&nbsp;&nbsp;&nbsp;istruzioni<br/>
+		}<br/></I></li>
+	<br/>
+	<li><b>while</b><br/>
+	sintassi:<br/>
+	<i>while (espressione) <br/>
+	&nbsp;&nbsp;&nbsp;istruzione</i><br/>
+	<br/>
+	viene ripetuta l'istruzione finchè l'espressione è vera<br/></li><br/>
+	<li><b>do/while</b><br/>
+	sintassi:<br/>
+	<i>do<br/>
+	&nbsp;&nbsp;&nbsp;istruzione<br/>
+	while (espressione);</i><br/>
+	<br/>
+	viene ripetuta l'istruzione finchè l'espressione è vera, ma a differenza del while l'istruzione viene eseguita almeno una volta.</li>
+	<br/>
+	<br/>
+	<li><b>for</b><br/>
+	sintassi:<br/>
+	<i>for (inizializzazione; test; incremento)<br/>
+	&nbsp;&nbsp;&nbsp;istruzione<br/></i>
+	<br/>è analogo a:<br/>
+	<i>inizializza;<br/>
+	while (espressione) <br/>
+	&nbsp;&nbsp;&nbsp;istruzione<br/>
+	&nbsp;&nbsp;&nbsp;incremento;</i><br/>
+	<br/>
+	</li>
+	<br/>
+	<li><b>for/in</b><br/>
+	sintassi:<br/>
+	<i>for (variabile in oggetto)<br/>
+	&nbsp;&nbsp;&nbsp;istruzione</i><br/>
+	<br/>
+	variabile rappresenta il nome di una variabile, oggetto è il nome di un oggetto, oppure una espressione che viene valutata come un oggetto. Con questa struttura di controllo vengono lette una per una tutte le proprietà di un oggetto senza conoscerne il nome.<br/></li>
+	<br/>
+	<li><b>break</b><br/>
+	sintassi:<br/>
+	<i>break;</i><br/><br/>
+	l'istruzione break fa in modo di uscire immediatamente da un ciclo più interno o da un'istruzione switch.</li>
+	<br/>
+	<br/>
+	<li><b>return</b><br/>
+	sintassi:<br/>
+	<i>return espressione;</i><br/>
+	<br/>
+	tale istruzione serve a ritornare un valore da una istruzione.</li>
+</ul>
+</p>
+<a href="#title"><img src="IMG/freccia_su.gif" border="0"></a>
+<hr>
+<h4 id="dic">Dichiarazione di variabili e funzioni</h4>
+<p>
+<ul>
+	<li><b>var</b>: <br/>
+	l'istruzione <i>var</i> rappresenta un modo per dichiarare esplicitamente una o più variabili.<br/>
+	La sintassi è la seguente:<br><br>
+	<b>var</b> <i>nome_1 [ = valore_1] [,..., nome_n [=valore_n]</i></li>
+	<br>&nbsp;
+	<li><b>function</b>:<br/>
+	L'istruzione <i>function</i> definisce una funzione di Javascript. la sua sintassi è la seguente:<br/><br/>
+	<b>function</b> <i>nomefunzione ( [arg1 [,arg2 [...,argn]]]){ <br/>
+	&nbsp;&nbsp;&nbsp;istruzioni<br/>
+	}</i></li>
+</ul>
+</p>
+<a href="#title"><img src="IMG/freccia_su.gif" border="0"></a>
+<hr>
+<table align="center">
+	 <tr> 
+    	<td><a href="espressioni.htm"><img src="img/freccia_sx.gif" width="30" height="30" border="0"></a></td>
+    	<td><a href="intros.htm"><img src="IMG/HOME.GIF" border="0"></a></td>
+    	<td><a href="funzioni.htm"><img src="img/freccia_dx.gif" width="30" height="30" border="0"></a></td>
+  	</tr>
+	</table>
+</body>
+</html>

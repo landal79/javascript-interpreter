@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Documento senza titolo</title>
+<link href="css/main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<img src="img/implementazione.jpg" width="350" height="60">
+<hr>
+<h4>Framework I/O</h4>
+<li>L'interfaccia di grafica per l'interazione con l'utente e  la gestione degli da essa generati, sono realizzati dalle classi
+ persenti nel package <i>iodevice</i>, in paricolare la classe <b>IODevice</b>, se specializzata fornisce già tutte le funzionalità
+ necessarie per gestire le interfacce grafiche.</li>
+<h4>Gerarchia dei Token</h4>
+<li>Nel package <i>token</i> è contenuta sia la gerarchia di interfacce che definisce i tipi di token, sia le classi che le implementano,
+inoltre in tale package è contenuta l'interfaccia ITokenFactory, che definisce i metodi per creare i token.</li>
+<h4>Lexer</h4>
+<li>Il lexer è definito dal tipo <i>ILexer</i>, a sua volta implementato dalla classe <i>Lexer</i>, entrambi sono
+contenuti nel package <i>lexer</i>.</li>
+<h4>Gerarchi Apt</h4>
+<li>La gerarchia di apt, ossia tutte le classi implementano una particolare categoria sintattica sono contenute nel
+ package <i>apt</i>.</li>
+<h4>Parser</h4>
+<li>Nel package <i>parser</i> sono contenuti tutti gli strumenti necessari per eseguire l'analisi sintattica, il parser, tipo <i>IParser</i>  implementato dalla classe
+ <i>JavascriptParser</i>, il tipo <i>LLAnalisys</i> che definisce i metodi per l'analisi LL(k), è implementata dalla
+ classe <i>LexerLL</i>.</li>
+ <h4>Visitor Interpreter</h4>
+ <li>Nel package <i>visitor</i> sono contenuti l'interfaccia <i>IVisitor</i>, che è implementata <i>InterpreterVisitor</i>, che realizza l'interprete
+ di Javascript; inoltre in esso sono contenuti tutti le classi che il visitor sfrutta per portare a termine le proprie funzioni.
+ Nel sottopackage <i>datatype</i> sono contenute le classo che implementano i tipi di dato di javascript.</li>
+ <h4>Utility</h4>
+ <li>Nel package <i>utility</i> sono definiti vari tipi che rappresentano strutture dati dinamiche: il tipo lista è definito
+ dall'interfaccia <i>IList</i> ed implementato dalla classe List, da essi derivano due gerarchie parallele di tipi e delle rispettive
+ implementazioni di vari tipi di strutture dinamiche: Lifo, FifoList (una lista che fornisce metodi per essere usata come una lista.
+ Inoltre in tale package è contenuto anche la definizione del tipo <i>Iterator</i>, che definisce i metodi necessari per scorrere una lista.</li>
+ <h4>Controller</h4>
+ <li>Il controller dell'applicazione è la classe <i>Simulator</i>; nel package <i>simulator</i> oltre al controller dell'applicazione ci sono i comandi che vengono
+ eseguiti alla pressione dei comandi: analisi sintattica è implementata da <i>SintaxCommand</i> e l'interpretazione è implementata dalla classe <i>InterpretCommand</i>.</li>
+ <br/>&nbsp;
+ <hr>
+<table align="center">
+	 <tr> 
+    	<td><a href="controller.htm" onClick="parent.leftFrame.location='menu_prog.htm';"><img src="img/freccia_sx.gif" border="0"></a></td>
+    	<td><a href="introduzione.htm"><img src="img/home.gif" border="0"></a></td>
+    	<td><a href="documentazione.htm"><img src="img/freccia_dx.gif" border="0"></a></td>
+  	</tr>
+</table>	
+</body>
+</html>

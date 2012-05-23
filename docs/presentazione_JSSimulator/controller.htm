@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Documento senza titolo</title>
+<link href="css/main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<img src="img/progetto.jpg" width="300" height="60">
+<hr>
+<h3>Simulator (Controller)</h3>
+<ul>
+	<li>Questo componente rappresenta il controller dell'applicazione, in pratica &egrave; il componente che crea tutte le altri parti dell'applicazione;</li>
+    <li>La classe <em>Simulator</em>, classe main dell'applicazione, specializza la classe <em>IODevice</em>, in pratica configura l'interfaccia di I/O come una finestra con un dispositivo di input uno di output e due pulsanti azione; </li>
+    <li>L'azione nel dispositivo di I/O &egrave; stata impostata attraverso il <em>pattern Command</em>, infatti le due azioni corrispondenti ai pulsanti, implementano l'interfaccia<em> ICommand</em>; inoltre dato che le due azioni hanno molti passi comuni, &egrave; stato usato il <em>pattern template method</em>: &egrave; stata creata una classe <em>Command</em>, che nell'implementazione di <em>execute</em> invoca un metodo astratto che verr&agrave; specializzato dalle sottoclassi. </li>
+    <li>diagramma delle classi: </li>
+	<p align="center"><img src="img/simulatordiag.JPG" width="428" height="328"></p>
+</ul>
+<hr>
+<table align="center">
+	 <tr> 
+    	<td><a href="interprete.htm"><img src="img/freccia_sx.gif" border="0"></a></td>
+    	<td><a href="introduzione.htm" onClick="parent.leftFrame.location='sommario.htm';"><img src="img/home.gif" border="0"></a></td>
+    	<td><a href="implementazione.htm" onClick="parent.leftFrame.location='sommario.htm';"><img src="img/freccia_dx.gif" border="0"></a></td>
+  	</tr>
+</table>	
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Documento senza titolo</title>
+<link href="css/main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<p><img src="img/analisi.jpg" width="300" height="60" id="top"></p>
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><img src="img/pall.gif" width="10" height="13"> <a href="#con">Considerazioni Fondamentali</a></td>
+    <td><img src="img/pall.gif" width="10" height="13"> <a href="#mod">Modello di Analisi</a> </td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+<hr>
+<h4 id="con">Considerazioni fondamentali</h4>
+<ul>
+	<li>
+	  <h5>Realizzazione di una interfaccia di ingresso:</h5>
+	  <ul>
+	  	come già visto nei requisiti utente, l'applicazione è dotata di una interfaccia grafica attraverso
+		cui interagire con l'utente; tale interfaccia come si può vedere è composta da tre sezioni ben distinte,
+		le quali hanno una funzione specifica:<br>&nbsp;
+		<li><i>Bottoni</i>: i bottoni servono all'utente per richiedere all'applicazione l'esecuzione di una determinata funzionalità, 
+		nel caso in esame quelle definite nei casi d'uso;</li>
+		<br/>&nbsp;
+		<li><i>Dispositivo di Input</i>: il dispositivo di input serve a far sì che l'utente possa inserire una frase o un piccolo programma, 
+		su cui, con la pressione dei bottoni, potrà richiedere di eseguire una particolare funzione; come si vede dal prototipo dell'interfaccia
+		 è presente un pulsante che permette di cancellare l'area qualora l'utente lo desideri;</li>
+		 <br/>&nbsp;
+		 <li><i>Dispositivo di Output</i>: il dispositivo di output rappresenta l'area in cui l'applicazione fornisce i risultati
+		  dell'elaborazione, che l'utente ha richiesto su quanto presente in input, con la pressione dei relativi bottoni;
+		   come si vede dal prototipo dell'interfaccia è presente un pulsante che permette di cancellare l'area qualora l'utente lo desideri;</li>
+		 </ul>
+	</li>
+</ul>
+<ul>
+  <li>
+    <h5>Definizione di una grammatica per descrivere il linguaggio javascript:</h5>
+    <ul>
+      <li>Per poter costruire un interprete di un linguaggio abbastanza complesso come javascript, 
+		  la teoria (appresa durante il corso di linguaggi e traduttori) afferma che è necessario descrivere
+      il linguaggio attraverso una grammatica (<a href="grammatiche/definizione.htm#title" target="_blank">vedi glossario</a>), 
+	  tale grammatica definisce le regole di costruzione delle frasi del linguaggio.
+	   Quindi solo quando si &egrave; in possesso della grammatica del linguaggio &egrave; possibile 
+	   stabilire se una frase appartiene al linguaggio e in seguito stabilire se la frase &egrave;
+	    sintatticamente corretta. </li>
+      <br/>&nbsp;
+      <li>La grammatica che descrive il linguaggio ottenuta ad una prima analisi del linguaggio potrebbe
+	   non essere adatta per la costruzione del linguaggio, quindi sar&agrave; necessario apportare delle
+	   modifiche specifiche per renderla adatta per la costruzione di riconoscitori, questo argomento 
+	   verr&agrave; analizzato nella fase di creazione della grammatica (vedere <a href="grammatiche.htm">grammatiche</a>);</li>
+	   <br/>&nbsp;
+      <li>Durante il ricoscimento e la valutazione di un linguaggio si passa attraverso varie fasi: analisi lessicale, analisi sintattica,
+	  costruzione dell'albero di derivazione; ognuna di queste operazione viene effettuata utilizzando una particolare
+	  grammatica che viene direttamente derivata da quella generale del linguaggio, attraverso opportune trasformazioni, 
+	  questi aspetti verranno approfonditi durante la creazione delle grammatiche;</li>
+    </ul>
+  </li>
+	<br>&nbsp;
+	 <li><h5>Riconoscere il linguaggio, concetti fondamentali:</h5>
+		<ul>
+		Il riconoscimento e la valutazione delle frasi di un linguaggio è costituito da varie fasi, la sequenza delle fasi fondamentali è la seguente:
+			<br/>&nbsp;
+			<li>analisi lessicale;</li>
+			<li>analisi sintattica;</li>
+			<li>valutazione;</li>
+		<br><br>
+		Dato che l'analisi sintattica e la valutazione delle frasi nell'applicazione possono essere anche richieste separatemente.
+		si è pensato che la soluzione migliore è separare in componenti diversi le varie funzioni; quindi si avranno i seguenti
+		componenti che si occuperanno delle varie fasi:
+		<br/>&nbsp;
+		<li><i>lexer</i>: compie l'analisi lessicale e fornisce in uscita la sequenza delle parole chiave che compongono la frase;</li>
+		<br/>&nbsp;
+		<li><i>parser</i>: compie l'analisi sintattica della frase ricevendo la sequenza di parole chiave dal lexer, eventualemente fornisce in uscita una struttura che rappresenta la frase più adatta per essere utilizzata dai valutatori;</li>
+		<br>&nbsp;
+		<li><i>valutatori</i>: possono esistere vari valutatori che ricevendo in ingresso la rappresentazione interna della frase compiono un tipo fra le tante possibili valutazioni della frase;</li>
+		</ul>
+	 </li>
+	 <br>&nbsp;
+	<li><h5>Separazione Model-View-Control:</h5>
+		<ul>
+		<li>Secondo il pattern di progettazione <i>MVC, Model-View-Control</i> prevede di costruire 
+		un'architettura a tre livelli, necessaria per ottenere la separazione fra presentazione (View), controllo (Control) e
+		informazione (Model); la caratteristica peculiare di questo pattern è che il controllo provvede a propagare ogni modifica del modello
+		a una o più viste;</li> 
+		<br/>&nbsp;
+		<li>nel caso specifico dell'applicazione che stiamo costruendo, esiste un controllore dell'interfaccia grafica, che 
+		si occupa di smistare le richieste da e verso l'interfaccia grafica, fornendo le relative operazioni per agire sull'interfaccia
+		per i componenti che ne hanno necessità e al contempo è a conoscenza delle operazioni possibili, quindi se riceve richieste dall'utente 
+		attraverso l'interfaccia sa esattamente a chi inoltrarle (vedi sotto diagramma analisi); </li>
+		</ul>
+	</li>
+</ul>
+<a href="#top"><img src="img/freccia_su.gif" border="0"></a>
+<hr>
+<h4 id="#mod">Modello di Analisi</h4>
+<p align="center"><img src="img/anlisismodel.JPG" width="441" height="403"></p>
+<h5>Descrizione Interfacce di sistema</h5>
+<table width="100%"  border="1" cellspacing="0" cellpadding="0">
+  <tr>
+    <td align="center">Entit&agrave;</td>
+    <td align="center">Descrizione</td>
+  </tr>
+  <tr>
+    <td><strong>Dispositivo di IO </strong></td>
+    <td>il dispositivo di IO &egrave; l'interfaccia fra l'utente e il sistema, attraverso di esso l'utente pu&ograve; interagire con il sistema per richiedere le possibili operazioni; </td>
+  </tr>
+</table>
+<h5>Descrizione Controllor </h5>
+<table width="100%"  border="1" cellspacing="0" cellpadding="0">
+  <tr>
+    <td align="center">Controller</td>
+    <td align="center">Descrizione</td>
+  </tr>
+  <tr>
+    <td><strong>IOController</strong></td>
+    <td>questo controller gestisce tutte le interfacce le interfacce utente, riceve le richieste da esse e le trasforma in richieste per l'apposito controller che &egrave; responsabile per una particolare operazione </td>
+  </tr>
+  <tr>
+    <td><strong>Lexer</strong></td>
+    <td>questo controller effettua l'analisi lessicale della frase in ingresso, fornendo in uscita una sequenza di Token</td>
+  </tr>
+  <tr>
+    <td><strong>Parser</strong></td>
+    <td>il controller effettua l'analisi sintattica della frase, dopo che il Lexer ha campiuto l'analisi lessicale, dalla quale il parser ricava la sequenza di Token di cui &egrave; composta la frase, in uscita produce un entit&agrave; Apt </td>
+  </tr>
+  <tr>
+    <td><strong>Interprete</strong></td>
+    <td>questo controller, dopo che il parser ha compiuto l'analisi sintattica , usa l'Apt da esso prodotto per compiere la valutazione semantica della frase, fornendo in uscita la valutazione; </td>
+  </tr>
+</table>
+<h5>Descrizione Entit&agrave;</h5>
+<table width="100%"  border="1" cellspacing="0" cellpadding="0">
+  <tr>
+    <td align="center">Entit&agrave;</td>
+    <td align="center">Descrizione</td>
+  </tr>
+  <tr>
+    <td><strong>Token</strong></td>
+    <td>rappresenta una particolare categoria lessicale </td>
+  </tr>
+  <tr>
+    <td><strong>Apt</strong></td>
+    <td>rappresenta una particolare categoria sintattica usata per costruire l'albero di derivazione della frase </td>
+  </tr>
+</table>
+<br/>
+<a href="#top"><img src="img/freccia_su.gif" border="0"></a>
+<hr>
+<table align="center">
+	 <tr>
+	 	<td><a href="protointer.htm" onClick="parent.leftFrame.location='menureq.htm';" ><img src="img/freccia_sx.gif" border="0"></a></td> 
+    	<td><a href="introduzione.htm"><img src="img/home.gif" border="0"></a></td>
+		<td><a href="piano.htm" target="_self"><img src="img/freccia_dx.gif" border="0"></a></td>
+  	</tr>
+</table>	
+</body>
+</html>

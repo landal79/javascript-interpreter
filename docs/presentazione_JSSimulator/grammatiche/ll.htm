@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Documento senza titolo</title>
+<link href="css/main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h2 id="title" align="center">Grammatiche LL(k)</h2>
+	<hr>
+	<ol>
+	<li><a href="#k">grammatiche ll(k)</a></li>
+	<li><a href="#1">grammmatiche ll(1)</a></li>
+	</ol>	
+	<hr>
+	<h3 id="k">Grammatiche LL(k)</h3>
+	<p>
+		<ul>
+		<li>L'analisi ricorsiva discendente (analisi top-down) è la tecnica che ci permette di riconoscere linguaggi context-free deterministici tramite PDA deterministici, tale tecnica è applicabile se la grammatica context-free ha particolari proprietà, cioè di essere LL(1), particolare classe di grammatiche LL(k).</li>
+		<br/>&nbsp;
+		<li>La classe delle grammatiche LL(k) è caratterizzata dalla possibilità di analizzare le frasi <i>Left to right</i> applicando la <i>left-most derivation</i> (derivazione canonica sinistra) utilizzando al più k simboli della frase per scegliere con certezza la produzione opportuna per la riscrittura.</li>
+		<br/>&nbsp;
+		<li>In generale, non tutti i linguaggi context-free possiedono una grammatica LL(k): esistono quindi linguaggi context-free non riconoscibili in modo deterministico con le tecniche dell'analisi LL(k).</li>
+		</ul>
+	</p>
+	<a href="#title"><img src="IMG/freccia_su.gif" border="0"></a>
+	<hr>
+	<h3 id="1">Grammattiche LL(1)</h3>
+	<p>	
+	<ul>
+  	<li>Le grammatiche LL(1) sono una classe di grammatiche sottoinsieme delle LL(k). 
+    	Alle grammatiche LL(1) per scegliere con certezza la produzione giusta basta 
+    	un solo simbolo della frase.</li>
+  	<br>&nbsp; 
+	<li><b>Starter Symbols</b><br/>
+    <ul>
+      <li> Anche se le parti destre delle produzioni di uno stesso metasimbolo 
+        non iniziano con un simbolo terminale può ancora essere possibile scegliere 
+        la produzione giusta usando il simbolo d'ingresso attuale.</li>
+      <li>Siano<br>
+        &#8226; A un metasimbolo appartenente a VN.<br>
+        &#8226; a, &szlig; due generiche stringhe di terminali e non terminali. 
+      </li>
+      <li>Definiamo<br>
+        &#8226; starter symbols del non-terminale A <b>appartenente a</b> VN l&#8217;insieme<br>
+        SS(A) = { a <b>appartiene a</b> VT | A -> a &szlig; (con 1 o più derivazioni) 
+        }, con &szlig; <b>appartenente a</b> V*<br>
+        &#8226;starter symbols della riscrittura a l&#8217;insieme<br>
+        SS(&alpha;) = { a <b>appartiene a</b> VT | &alpha; -> a &szlig; (con 0 
+        o più derivazioni) }, con a <b>appartenente a</b> V^+ e &szlig; <b>appartenente a</b> V*<br>
+      </li>
+      <li>Condizione necessaria perchè una grammatica sia LL(1) è che per ogni 
+        metasimbolo che appare nella parte più a sinistra di più produzioni, gli 
+        starter symbols corrispondente alle parti destre delle produzioni alternative 
+        siano disgiunti.</li>
+    </ul>
+  </li>
+  <br/>
+  <li><b>Director Symbols</b><br/>
+    <ul>
+      <li>Nel caso la grammatica possa generare la stringa vuota allora si considerano 
+        i director symbols (DS).</li>
+      <br/>
+      <li>Definiamo director symbols della produzione A -&gt; &alpha; l&#8217;insieme 
+        degli starter symbols e dei following symbols:<br>
+        <i>DS(A -&gt; &alpha; ) = SS(&alpha;) U FS(A) se &alpha; -> &epsilon; 
+        (con 0 o più derivazioni)</i><br>
+        dove FS(A) denota l'insieme dei simboli che, nel caso A generi &epsilon; 
+        , possono seguire la frase generata da A:<br>
+        <i>FS(A) = { a <b>appartiene a </b>VT | S -> &gamma;Aa&beta; (con 0 o 
+        più derivazioni)} con &gamma;, &beta; <b>appartenenti a</b> V*</i>&nbsp; 
+      </li>
+      <li>Condizione necessaria e sufficiente perché una grammatica context-free 
+        sia LL(1) è che per ogni metasimbolo che appare nella parte sinistra di 
+        più produzioni, i director symbols relativi a produzioni alternative siano 
+        disgiunti</li>
+    </ul>
+  </li>
+  &nbsp; 
+  <li>Le grammatiche di un linguaggio possono non essere LL(1), allora si pone 
+    il problema di stabilire se una grammatica possa essere trasformata in una 
+    grammatica LL(1). Se esiste, allora è possibile trasformare la grammatica 
+    context-free in una LL(1) tramite le due note tecniche di eliminazione della 
+    ricorsione sinistra e fattorizzazione.</li>
+  <br/>
+  &nbsp; 
+  <li>Le grammatiche che contengono ricorsioni sinistre non sono LL(1).</li>
+</ul>
+</p>
+<a href="#title"><img src="IMG/freccia_su.gif" border="0"></a>
+	<hr>
+	<table align="center">
+  <tr> 
+    <td height="34"><a href="tipi.htm"><img src="img/freccia_sx.gif" width="30" height="30" border="0"></a></td>
+    <td><a href="definizione.htm"><img src="IMG/HOME.GIF" border="0"></a></td>
+    <td><a href="alberi.htm"><img src="img/freccia_dx.gif" width="30" height="30" border="0"></a></td>
+  </tr>
+</table>
+</body>
+</html>

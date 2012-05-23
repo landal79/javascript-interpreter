@@ -1,0 +1,72 @@
+.txt {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #000000;
+}
+a:link {
+	color: #B44503;
+	text-decoration: none;
+}
+a:active {
+	color: #B44503;
+	text-decoration: none;
+}
+a:visited {
+	color: #803102;
+	text-decoration: none;
+}
+a:hover {
+	font-weight: bold;
+	color: #B44503;
+	text-decoration: underline;
+}
+li {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	color: #000000;
+	text-align: justify;
+}
+.menu {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-weight: bolder;
+	color: #000000;
+}
+body {
+	background-color: #E1E1FF;
+	font-size: 14px;
+}
+h3 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	color: #AF675C;
+	text-decoration: underline;
+}
+td {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 14px;
+}
+th {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	font-weight: bolder;
+	text-decoration: underline;
+	color: #AF675C;
+}
+h4 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-style: italic;
+	color: #B44503;
+	text-decoration: underline;
+}
+h5 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	color: #B44503;
+}
+h6 {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	color: #592E28;
+}

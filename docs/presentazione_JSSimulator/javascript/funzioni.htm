@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Documento senza titolo</title>
+<link href="css/main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h3 align="center" id="title">Funzioni</h3>
+	<hr>
+	
+<ol>
+  <li><a href="#def">Definizione e chiamata di funzioni</a></li>
+  <li><a href="#fun">Il costruttore Function</a></li>
+  <li><a href="#let">Letterali Funzione</a></li>	
+  <li><a href="#dati">Funzioni come dati</a></li>
+</ol>
+	<hr>
+	<h4 id="def">Definizione e chiamata di funzioni</h4>
+	<p>
+	<ul>
+	<li><p align="justify">Il modo più comune per definire una funzione prevede l'utilizzo dell istruzione <b>function</b>. Questa parola chiave deve essere seguita da quanto elencato:</p></li>
+		<ul>
+		<li>nome della funzione</li>
+		<li>un elenco opzionale di nomi di parametri, separati da virgole racchiusi tra parentesi</li>
+		<li>le istruzioni della funzione vanno racchiuse tra parentesi graffe</li>
+		</ul>
+	<br/>&nbsp;
+	esempio:<br/><br/>&nbsp;
+	function sum(a,b){return a+b;}
+	<br/>&nbsp;
+	<li>Dato che javascript è un linguaggio debolmente tipizzato, nei paramentri della funzione non viene definito un tipo e inoltre javascript non controlla se i dati passati sono del tipo che la funzione si attende.</li>
+	<br/>&nbsp;
+	<li>se un tipo di dati è importante, è possibile verificarlo mediante l'operatore <i>typeof</i>.</li>
+	<br/>&nbsp;
+	<li>javascript non controlla che sia corretto i numero degli argomenti passati. Se gli argomenti sono in numero minore, rispetto a quelli attesi, a quelli non ricevuti viene assegnato un valore indefinito.</li>
+	</ul>
+	</p>
+	<a href="#title"><img src="IMG/freccia_su.gif" border="0"></a>
+	<hr>
+	<h4 id="fun">Il costruttore Function</h4>
+	<p align="justify">
+	<ul>
+	
+	<li>E' possibile definire una funzione dinamicamente utilizzando il costruttore <i>Function</i> e l'operatore <i>new</i> (per una panoramica complessiva viene spiegata anche questa possibilità, ma non verrà in effetti inclusa nel progetto).</li>
+	<br/><br/>&nbsp;
+	Esempio:<br/><br/>&nbsp;
+	var f=new Function("x","y","return x*y;");<br/>
+	<br/>&nbsp;
+	equivalente a:<br/>
+	<br/>&nbsp;
+	function (x,y){return x*y;}
+	<br/>&nbsp;
+	<li>Il costruttore <i>Function( )</i> accetta qualsiasi numero di argomenti stringa. L'ultimo argomento è il corpo della funzione, che può contenere istruzioni javascript arbitrarie, separate da ";".
+	Tutti gli altri argomenti per il costruttore sono stringhe che specificano i nomi dei parametri per la funzione definita. Se si definisce una funzione senza argomenti si passa una sola stringa: il corpo della funzione.</li>
+	<br/>&nbsp;
+	<li>Al costruttore <i>Function( )</i> non viene passato alcun argomento che specifica un nome per la funzione che esso crea, per tale motivo le funzioni così create sono dette <b>funzioni anonime</b>.</li>
+	</ul>
+	</p>
+	<a href="#title"><img src="IMG/freccia_su.gif" border="0"></a>
+	<hr>
+	<h4 id="let">Letterali Funzione</h4>
+	<p align="justify">
+	<ul>
+	<li>E' un'espressione che crea una funzione senza nome, esempio:</li>
+	<br/><br/>
+	var f=function(x) {return x*x}
+	<br/><br/>
+	<li>Le si può anche dare un nome come caso particolare, esempio:</li>
+	<br/><br/>
+	var f=function fact(x){if (x<=1) return 1; else return x*fact(x-1);}<br/><br/>
+	(quest'ultima possibilità non verrà implementata nel progetto, non sarà perciò possibile definire funzioni ricorsive con i letterali funzione) 
+	</ul>
+	</p>
+	<a href="#title"><img src="IMG/freccia_su.gif" border="0"></a>
+	<hr>
+	<h4 id="dati">Funzioni come dati</h4>
+	<p>
+	<ul>
+	<li><p align="justify">In Javascript, le funzioni possono essere intese anche come dati, quindi possono essere 
+	assegnate a variabili, memorizzate in proprietà di oggetti o in elementi di array, passate come
+	argomenti in funzioni.</p></li>
+	Esempi:<br/>
+	<br/>&nbsp;
+	function quadrato(x) {return x*x;}<br/>
+	<p align="justify">tale definizione crea un nuovo oggetto e lo assegna alla varibile quadrato. Il nome di una 
+	funzione è però poco importante, in quanto è semplicemente il nome di una variabile che la contiene.
+	La funzione può essere assegnata a un'altra variabile e continuare a funzionare nello stesso modo.
+	</p>
+	var a = quadrato(4); // a = = 16 <br/>
+	<br/>
+	var b = quadrato; // b si riferisce alla stessa funzione cui si riferisce quadrato<br/>
+	<br/>
+	var c = b(5) // c = 25<br/>
+	<br/>
+	<li>Le funzioni possono inoltre essere assegnate a proprietà di oggetti invece che a variabili globali. In questo caso vengono chiamati <i>metodi.</i></li>
+	<br/><br/>Esempio:<br/>
+	<br/>&nbsp;
+	var o=new Object;
+	o.quadrato = new Function ("x","return x*x;");	
+	</ul>
+	</p>
+	<a href="#title"><img src="IMG/freccia_su.gif" border="0"></a>
+	<hr>
+	<table align="center">
+  <tr> 
+    <td><a href="istruzioni.htm"><img src="img/freccia_sx.gif" width="30" height="30" border="0"></a></td>
+    <td><a href="intros.htm"><img src="IMG/HOME.GIF" border="0"></a></td>
+    <td><a href="oggetti.htm"><img src="img/freccia_dx.gif" width="30" height="30" border="0"></a></td>
+  </tr>
+</table>
+</body>
+</html>

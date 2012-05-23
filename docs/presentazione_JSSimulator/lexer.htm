@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Documento senza titolo</title>
+<link href="css/main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<img src="img/progetto.jpg" width="300" height="60">
+<hr>
+<h3>Lexer</h3>
+<ul>
+<li>Lo scanner è il modulo software, che implementa la funzione di analizzatore lessicale. Il Lexer riceve in ingresso le frasi del linguaggio, o meglio riceve la sequenza di caratteri che compongono la frase, in tale sequenza di caratteri li lexer individua i token (i token che riconosce devono appartenere alla gerarchia precedente), cioè le varie categorie lessicali alle quali appartengono le parole che compongono la frase. Per individuare i vari token lo scanner utilizza la grammatica del lessico precedentemente descritta (vedi <a href="grammatiche.htm">grammariche</a>). L'uscita dello scanner è costituita da una sequenza di token, corrispondenti alle varie categorie lessicali della frase.</li>
+<li>Inoltre il lexer fornisce altre funzionalit&agrave;: &egrave; possibile ricavare il numero della frase appena letta.</li>
+<li>Una scelta di progetto &egrave; stata di gestire gli errori usando le eccezioni, fornite dai linguaggi object-oriented, quindi nel caso si verifichi un qualsiasi errore durante la scansione della frase verr&agrave; generata una eccezione di nome <em>LexerException</em>. </li>
+<li>Il Lexer per compiere l'analisi lessicale si serve di due Tabelle Associative, esse conterranno rispettivamente,l'insieme di tutti i simboli e l'insieme delle parole chiave. Non esistendo i template in Java che permettono di specializzare la Hashtable, in modo che possa contenere solo Token, si sono create l'interfaccia <em>ITokenMap</em> (eredita da <em>java.util.Map</em>) e la classe che la implementa <em>TokenHashtable</em> (eredita da <em>java.util.Hashtable</em>), per evitare continui casting. </li>
+<li>Per quanto riguarda lo stream che rappresenta il dispositivo da cui legger&agrave; il Lexer deve supportare operazioni di marcatura altrimenti si verificher&agrave; un errore di lettura. </li>
+<li>Il lexer non crea direttamente i token ma si serve di una classe che implementa l'interfaccia ITokenFactory, in questo modo &egrave; totalmente indipendente dai token realmente creati.</li>
+<li>Quando finisce lo stream di input il lexer restituisce <em>null</em>, che indica che non ci sono pi&ugrave; token; </li>
+</ul>
+<p align="center"><img src="img/LexerDiag.JPG" width="530" height="627"></p>
+<hr>
+<table align="center">
+	 <tr> 
+    	<td><a href="token.htm"><img src="img/freccia_sx.gif" border="0"></a></td>
+    	<td><a href="introduzione.htm" onClick="parent.leftFrame.location='sommario.htm';"><img src="img/home.gif" border="0"></a></td>
+    	<td><a href="gerarchia_apt.htm" ><img src="img/freccia_dx.gif" border="0"></a></td>
+  	</tr>
+</table>	
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Documento senza titolo</title>
+<link href="css/main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<img src="img/progetto.jpg" width="300" height="60">
+<hr>
+<h3>Parser</h3>
+<ul>
+	<li>Il Parser è il componente software che esegue l'analisi sintattica della frase, per fare questo il parser si appoggia alla grammatica del parser (vedi <a href="grammatiche.htm#par">grammatiche</a>), in questo caso costruiremo un parser che genera un albero di derivazione.</li>
+    <li>Il Parser riceve in ingresso i Token generati dal lexer e usando la grammatica del parser costruisce l'albero di derivazione, che &egrave; la rappresentazione interna della frase che verr&agrave; poi utilizzata dal visitor per compiere una qualsiasi valutazione sulla frase. Per costruire l'albero di derivazione il parser utilizza la tassonomia di classi dell'apt.</li>
+    <li> Abbiamo detto che la grammatica del parser &egrave; di tipo 2, a causa della presenza di <I>self-embedding</I> non eliminabili, quindi il corrispondente automa &egrave; un PDA (<I>Push Down Automata</I>). Per costruire il parser verr&agrave; applicata l'<I>analisi ricorsiva discendente</I>, secondo cui ad ogni produzione verr&agrave; fatta corrispondere una funzione che riconosce la relativa parte di frase, costruendo inoltre la relativa parte di albero e restituendo la parte di frase lasciata scoperta. Quindi ci saranno tante funzioni quante le classi della tassonomia dell'apt. </li>
+    <li>La grammatica del parser non &egrave; LL(1), ma in generale &egrave; LL(k), cio&egrave; sono necessari al pi&ugrave; k simboli per decidere quale produzione applicare; nella grammatica ci sono due caso che si possono distinguere, per ognuno dei due casi creo un'apposita funzione che verifica qual &egrave; la produzione giusta, i casi sono i seguenti:
+	<BR>&nbsp;
+	<ul>
+	  <li>Per distinguere fra le produzioni: <em>EXP-VAR-LEFT = EXP-ASSIGN | EXP-COND</em> utilizzo una funzione <strong>verifyAssign</strong> che verifica nel caso il primo token sia un identificatore se dopo c'è una = che rappresenta una operazione di assegnamento; </li>
+	    <li> Analogamente per distinguere fra le produzioni <I>EXP-VAR-RIGHT | EXP-VAR-LEFT ( <I>++</I> | <I>--</I> )</I>, use&ograve; una funzione <B>verifyExpPost</B>, la quale verificher&agrave; se dopo l'identificatore c'&egrave; un operatore ++ o --;</li>
+    </ul>	
+	</li>
+	<br>&nbsp;
+	<li>Il parser per compiere l'analisi si basa sulla relativa grammatica, quindi con l'analisi ricorsiva
+	 discendente esiste una funzione per ogni produzione.</li>
+</ul>
+<ul>
+    <li>Per realizzare l'analisi LL(k) creo un oggetto che si chiama <i>LexerLL</i>, in pratica sfruttando 
+	  il pattern di progettazione <em>decorator</em> faccio ereditare LexerLL da ILexer cos&igrave; che
+	   possa fornire le stesse funzionalit&agrave; del Lexer effettivo, aumentandone inoltre le 
+	   potenzialit&agrave;, infatti il nuovo LexerLL implementa l'interfaccia <em>LLAnalisys</em> che 
+	   fornisce le funzionalit&agrave; necessarie per eseguire l'analisi LL, in pratica la gestione della
+	    coda. Le funzione di analisi sintattica che scandiscono la sequenza di token continua a leggere i 
+	    token dal lexer come se questi fossero letti diretta dall'input. Questo ha portato l'enorme vantaggio
+	     di non dover intaccare le funzioni che sono LL(1), che sono scritte come se il parser avesse tutte
+        produzioni LL(1).</li>
+    <p align="center"><img src="img/parserdiag.JPG"> </p>
+    <li>Inoltre il LexerLL per gestire una struttura dati per l'analisi LL si è servito delle funzionalità
+      messe a disposizione dal package <i>utility</i>, in particolare usa un TokenFifoList, cioè una lista
+	   che può essere usata anche come fifo, contenente token, questo perchè il lexerll ha la necessità 
+     di sfruttare entrambe le funzionalità.</li>
+     <p align="center"><img src="img/utilitydiag.JPG"> </p>
+     <li>Per scorrere la lista è stato creato anche un Iterator.</li>
+</ul>
+<hr>
+<table align="center">
+	 <tr> 
+    	<td><a href="gerarchia_apt.htm"><img src="img/freccia_sx.gif" border="0"></a></td>
+    	<td><a href="introduzione.htm" onClick="parent.leftFrame.location='sommario.htm';"><img src="img/home.gif" border="0"></a></td>
+    	<td><a href="interprete.htm" ><img src="img/freccia_dx.gif" border="0"></a></td>
+  	</tr>
+</table>	
+</body>
+</html>

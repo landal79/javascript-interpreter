@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Documento senza titolo</title>
+<link href="css/main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body class="txt">
+<img src="img/architettura.jpg" width="300" height="60">
+<table width="100%"  border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><img src="img/pall.gif" width="10" height="13"> <a href="#arch">Architettura Logica</a> </td>
+    <td><img src="img/pall.gif" width="10" height="13"> <a href="#desc">Descrizione dei Componenti</a> </td>
+    <td><img src="img/pall.gif" width="10" height="13"> <a href="#int">Interfacce</a> </td>
+  </tr>
+</table>
+<hr>
+<h4 id="#arch">Architettura Logica</h4>
+<p>Da quanto emerso durante la fase di <a href="analisi.htm">analisi del problema</a> e agli <a href="obiettivi.htm">obiettivi</a> che ci pone con lo sviluppo 
+  di questa applicazione, si costruirà ora l'architettura che permetterà di realizzare i requisiti utente. </p>
+<p>Un discorso a parte merita la gestione degli errori: per la gestione degli errori si &egrave; deciso di appoggiarsi al meccanismo delle eccezioni fornito dai linguaggi di programmazione ad oggetti.<br/><br/>
+Propongo ora lo schema architetturale di base che verrà adottato per lo sviluppo dell'applicazione: </p>
+<p align="center"><img src="img/architetturadiag.JPG" width="596" height="737"></p>
+<p><h4 id="#desc">Descrizione dei componenti dell'architettura:</h4>
+
+<table width="100%"  border="1" cellspacing="0" cellpadding="0">
+  <tr>
+    <th scope="col">Componente</th>
+    <th scope="col">Descrizione</th>
+  </tr>
+  <tr>
+    <td class="menu">IODevice</td>
+    <td>fornisce le funzionalit&agrave; necessarie a costruire una interfaccia grafiaca, costituita da un dispositivo di input, uno di output (ognuna delle quali &egrave; rappresentata da un'area) e di un insieme di pulsanti per invocare le varie operazioni possibili </td>
+  </tr>
+  <tr>
+    <td class="menu">Simulator</td>
+    <td>questo componente serve a costruire fisicamente l'interfaccia grafica, come serve alla nostra particolare applicazione, collegando ai pulsanti le varie operazioni; inoltre questo componente si incaricher&agrave; di gestire il funzionamento dell'applicazione, ovvero smister&agrave; le richieste dall'interfaccia grafica verso i componenti che si incaricano di gestirle, viceversa indirezzeranno il risultato delle operazioni verso il dispositivo di uscita </td>
+  </tr>
+  <tr>
+    <td class="menu">Lexer</td>
+    <td>si occupa dell'analisi lessicale, esso fornisce in uscita la sequenza di token (categorie lessicali) che costituiscono la frase </td>
+  </tr>
+  <tr>
+    <td class="menu">Parser</td>
+    <td>si occupa dell'analisi sintattica, esso fornisce in uscita l'albero di derivazione (costituito da Apt) di cui si compone la frase </td>
+  </tr>
+  <tr>
+    <td class="menu">Visitor</td>
+    <td>questo componente contiene i vari valutatori al suo intero, nel caso specifico un interprete</td>
+  </tr>
+  <tr>
+    <td class="menu">Token</td>
+    <td>questo componente contiene la tassonomia di token che rappresentano le varie categorie lessicali possibili </td>
+  </tr>
+  <tr>
+    <td class="menu">Apt</td>
+    <td>questo componente contiene la tassonomia di classi che possono comporre l'albero di derivazione, ovvero le varie categori sintattiche</td>
+  </tr>
+</table>
+</p>
+<h4 id="#int">Descrizione delle interfacce dei componenti</h4>
+<p align="justify">
+La definizione di interfaccie, che specificano un determinato tipo, servono a conseguire l'obiettivo di riusabilità
+dei componenti che ci eravamo prefissi, infatti un componente può fare riferimento ad un altro attraverso la sua
+interfaccia, senza crearne una istanza da utilizzare direttamente, operazione che verrà realizzata indirettamente attraverso
+l'uso di opportuni design pattern creazionali. In questo modo un componente può essere sostiuito senza che gli altri
+se ne rendano conto e il sistema continui ad operare correttamente.
+</p>
+<p align="justify">Inoltre le interfacce sono molto utili, in quanto permettono di costruire l'infrastruttura del sistema e di inserirvi gradualmente i componenti per poterla testare un po' per volta, in quanto al posto dei componenti che non sono ancora stati realizzati si possono inserire degli oggetti di test (i quali non eseguono nessuna operazione) che implementano l'interfaccia del componente da sostiuire.</p>
+<p align="justify"> I componenti <em>Token</em> e <em>Apt</em>, non hanno interfaccia, in quanto rappresentano delle gerarchie di classi che non esegue nessuna funzione, ma servono solo a fornire delle informazioni. Esse hanno come radice una classe astratta. ll controller non ha interfaccia, non &egrave; un componente che fornisce funzionalit&agrave; ad altri componenti, ma &egrave; specifico per l'applicazione in questione, &egrave; appunto un controllore che ha il ruolo di coordinare le funzionlit&agrave; degli altri sistemi. </p>
+<p align="center"><img src="img/interfacce.JPG" width="426" height="447"></p>
+<hr>
+<table align="center">
+	 <tr> 
+    	<td><a href="piano.htm"><img src="img/freccia_sx.gif" border="0"></a></td>
+    	<td><a href="introduzione.htm"><img src="img/home.gif" border="0"></a></td>
+    	<td><a href="progetto.htm" onClick="parent.leftFrame.location='menu_prog.htm';"><img src="img/freccia_dx.gif" border="0"></a></td>
+  	</tr>
+</table>	
+</body>
+</html>

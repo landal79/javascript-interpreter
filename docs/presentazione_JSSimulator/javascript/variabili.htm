@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Documento senza titolo</title>
+<link href="css/main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h3 align="center" id="title">Variabili</h3>
+<hr/>
+<ol>
+  <li><a href="#tipi">Tipizzazione delle variabili</a></li>
+  <li><a href="#dichiarazione">Dichiarazione di variabili</a></li>
+  <li><a href="#ambito">Ambito delle variabili</a></li>
+</ol>
+<hr/>
+<h4 id="tipi">Tipizzazione delle variabili</h4>
+<p>
+<ul>
+  <li>Javascript è un linguaggio <em>debolmente tipizzato</em>; questo significa 
+    che una variabile javascript può contenere valori di qualsiasi tipo.</li>
+  <br/>
+  Esempio: <br/>
+  i=10; <br/>
+  i="dieci"; <br/>
+  &nbsp; 
+  <li>Una caratteristica derivata dalla mancanza di tipizzazione di javascript 
+    è che il linguaggio converte automaticamente i valori da un tipo all'altro 
+    ove è necessario</li>
+</ul>
+</p>
+<a href="#title"><img src="IMG/freccia_su.gif" border="0"></a>
+<hr>
+<h4 id="dichiarazione">Dichiarazione di variabili</h4>
+<p>
+<ul>
+  <li>Prima di poter usare una variabile in un programma Javascript è necessario 
+    <i>dichiararla</i>:<br/>
+    con la parola chiave <strong>var</strong> le variabili vengono dichiarate 
+    <em>esplicitamente</em>, se si omette le variabili sono dichiarate <em>implicitamente</em>. 
+    Esempi dichiarazione esplicita: <br/>
+    <em>var i; <br/>
+    var sum;</em><br/>
+    è anche possibile inizializzarle:<br/>
+    <em>var msg="hello";<br/>
+    var i=0,j=0,k=0;</em><br/>
+    &nbsp; </li>
+  <li>Le <u>variabili dichiarate implicitamente</u> (cioè dichiarate senza usare 
+    la parola chiave var) <u>sono sempre create come variabili globali</u>, anche 
+    se sono dichiarate e utilizzate nel corpo di una funzione.</li></br>
+  &nbsp; 
+  <li>Per evitare di creare una variabile globale (o di utilizzare una variabile 
+    globale esistente) è indispensabile usare l'istruzione <b>var</b> nel corpo 
+    di una funzione.</li>
+</ul>
+</p>
+<a href="#title"><img src="IMG/freccia_su.gif" border="0"></a>
+<hr>
+<h4 id="ambito">Ambito delle variabili</h4>
+<p>
+<ul>
+  <li>L'ambito di una variabile (o Scope) è l'area del programma in cui questa 
+    risulta definita.</li>
+  <br/>
+  &nbsp; 
+  <li>Una <u>variabile globale</u> è definita in qualsiasi punto del codice javascript.</li>
+  <br/>
+  &nbsp; 
+  <li>Le variabili dichiarate all'interno di funzioni, con la parola chiave var, 
+    sono definite solo all'interno del corpo della funzione, sono variabili <i>locali</i>.</li>
+  <br/>
+  &nbsp; 
+  <li>All'interno del corpo della funzione le variabili locali hanno la precedenza 
+    su eventuali variabili globali con lo stesso nome.</li>
+  <br/>
+  &nbsp; 
+  <li>Non esiste un meccanismo di ambito a livello di blocco. Quindi una blocco 
+    non delimita uno SCOPE!</li>
+  <br/>
+  &nbsp; 
+  <li>Tutte le variabili dichiarate all'interno di una funzione, a prescindere 
+    dalla posizione in cui sono state dichiarate rimangono definite lungo tutta 
+    la funzione.</li>
+</ul>
+</p>
+<a href="#title"><img src="IMG/freccia_su.gif" border="0"></a>
+<hr>
+<table align="center">
+  <tr> 
+    <td><a href="tdati.htm"><img src="img/freccia_sx.gif" width="30" height="30" border="0"></a></td>
+    <td><a href="intros.htm"><img src="IMG/HOME.GIF" border="0"></a></td>
+    <td><a href="espressioni.htm"><img src="img/freccia_dx.gif" width="30" height="30" border="0"></a></td>
+  </tr>
+</table>  
+</body>
+</html>

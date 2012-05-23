@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Documento senza titolo</title>
+<link href="css/main.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<h2 align="center" id="title">Grammatica</h2>
+	<hr>
+	<ol>
+	<li><a href="#int">Introduzione sui linguaggi</a></li>
+	<li><a href="#gram">Definizione di grammatica</a></li>
+	</ol>
+	<hr>
+	<h3 id="int">Introduzione sui linguaggi</h3>
+	<p>
+	<ul>
+	
+  <li>Un linguaggio di programmazione, per essere ben definito deve rispettare 
+    delle regole per la composizione delle frasi, in questo modo è possibile stabilire 
+    se una determinata frase appartiene o meno ad un linguaggio.</li>
+	<br/>&nbsp;
+	
+  <li>Una generica frase di un linguaggio oltre ad essere ben costruita secondo 
+    le regole grammaticali, deve essere avere un significato valido; 
+    questi due aspetti sono rispettivamente: 
+    <ul>
+		
+        
+      <li><strong>sintassi: </strong>è l'insieme delle regole formali per la scrittura 
+        di programmi in un linguaggio;</li>
+		
+      <li><strong>semantica:</strong> è l'insieme dei significati da attribuire 
+        alle frasi (sintatticamente corrette) costruite nel linguaggio;</li>
+		<br/>&nbsp;
+		</ul>
+		</li>
+	<li>Una frase viene analizzata su tre diversi livelli, lessicale, sintattico e semantico:
+		<ul>
+		<br/>
+      <li><em>Analisi Lessicale:</em> consiste nell'individuazione delle singole parole (<i>token</i>) che compongono una frase;
+	  	I token che possono comparire nelle frasi di un linguaggio sono stabiliti dalle regole grammaticali che descrivono il linguaggio;</li>
+		<br/>&nbsp;
+      <li><em>Analisi Sintattica:</em> consiste nella verifica che una frase possa essere costruita in base alle <i>regole grammaticali</i> che descrivono il linguaggio.</li>
+		<br/>&nbsp;
+      <li><em>Analisi Semantica:</em> consiste nel "calcolo" del significato del linguaggio;</li>
+	</ul>
+	</li>
+	<br>&nbsp;
+	<li>Facciamo ora una precisazione sul modo in cui possono essere analizzata i linguaggi, distinguiamo fra Interpreti e Compilatori:
+		<ul>
+			<br/>
+			<li><strong>Interprete</strong>: per un linguaggio L, è un programma che accetta in ingresso le frasi di L e le <i>esegue una per volta</i>; l'output dell'interprete è quindi una valutazione della frase;</li>
+			<br>&nbsp;
+			<li><strong>Compilatore</strong>: per un linguaggio L, è un programma che accetta in ingresso un programma scritto in L e lo riscrive in un altro linguaggio; l'output di un compilatore è una riscrittura dell'intero programma in un altro, purchè il primo sia sintatticamente e semanticamente corretto;</li>
+		</ul>
+	</li>
+	</ul>
+	</p>
+	<a href="#title"><img src="IMG/freccia_su.gif" border="0"></a>
+	<hr>
+	<h3 id="gram">Definizione di Grammatica</h3>
+	<p>
+	<ul>
+	<li><B>Alfabeto</B>: un alfabeto A è un insieme di simboli finito e non vuoto di simboli atomici;</li>
+	<li><b>Stringa</b>: una stringa è una sequenza si simboli, ossia un elemento del prodotto cartesiano A x A x ... x A;</li>
+	<li><b>Linguaggio L su un alfabeto A</b>
+		<ul>
+		<li> un linguaggio L è un insieme di stringhe su A;</li>
+		<li><i>Frase (sentence) di un linguaggio</i>: una stringa appartenente a quel linguaggio;</li>
+		<li><i>Cardinalità</i> di un linguaggio: il numero delle frasi del linguaggio;</li>
+		</ul></li>
+	
+  <li><b>Chiusura A*</b> di un alfabeto: è l'insieme infinito di tutte le stringhe 
+    composte con simboli di A;</li>
+	
+  <li><b>Chiusura positiva A+</b> di un alfabeto A: è l'insieme infinito di tutte le stringhe non nulle composte con simboli di A;</li>
+  <br/>&nbsp;
+  <li>Una <i>Grammatica</i> è una <b>notazione formale</b> con cui esprimere in <b>modo rigoroso</b> la <I>sintassi</I> di un linguaggio.</li>
+  <br/>&nbsp;
+  <li>La sintassi di un linguaggio può essere espressa attraverso la notazione BNF, così definita:<br/>
+  	<ul>
+	Una grammatica è una quadrupla &lt;VT, VN, P, s&gt; dove: <br/>
+	<li>VT è un insieme finito di simboli <i>terminali</i></li>
+	<li>VN è un insieme finito di simboli <i>non terminali</i></li>
+	<li>P è un insieme finito di <i>produzioni</i> ossia di regole di riscrittura &alpha;-&gt;&beta; &alpha; e &beta; sono stringhe</li>
+	<li>S è un particolare simbolo non-terminale detto <i>simbolo iniziale</i> o <i>scopo</i> della grammatica.</li>
+	</ul></li>
+	</ul>
+	</p>
+	<a href="#title"><img src="IMG/freccia_su.gif" border="0"></a>
+	<hr>
+	<table align="center">
+	 <tr> 
+    	<td><img src="img/space.gif" width="30" height="30"></td>
+    	<td><img src="img/SPACE.GIF" width="30" height="30"></td>
+    	<td><a href="tipi.htm"><img src="img/freccia_dx.gif" width="30" height="30" border="0"></a></td>
+  	</tr>
+	</table>	
+
+</body>
+</html>
